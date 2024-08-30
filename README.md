@@ -5,3 +5,5 @@
 |Samuel Johnson|
 |Jana Gamal|
 |Doha Hafez|
+
+# Change to close issue by Doha
