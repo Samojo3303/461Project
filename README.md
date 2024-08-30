@@ -1,4 +1,4 @@
 # 461Project
 
-Names:
+Group members:
 Samuel Johnson
