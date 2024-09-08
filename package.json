@@ -1,0 +1,28 @@
+{
+  "name": "461project",
+  "version": "1.0.0",
+  "description": "| Group members| |--------------| |Samuel Johnson| |Jana Gamal| |Doha Hafez| |Harrison Smith|",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Samojo3303/461Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Samojo3303/461Project/issues"
+  },
+  "homepage": "https://github.com/Samojo3303/461Project#readme",
+  "dependencies": {
+    "chai": "^5.1.1",
+    "mocha": "^10.7.3",
+    "node-fetch": "^3.3.2",
+    "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
+  }
+}
