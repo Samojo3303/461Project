@@ -17,7 +17,11 @@
   },
   "homepage": "https://github.com/Samojo3303/461Project#readme",
   "dependencies": {
+    "apollo-server": "^3.13.0",
+    "axios": "^1.7.7",
     "chai": "^5.1.1",
+    "graphql": "^16.9.0",
+    "graphql-request": "^7.1.0",
     "mocha": "^10.7.3",
     "node-fetch": "^3.3.2"
   },
