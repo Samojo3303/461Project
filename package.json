@@ -18,12 +18,18 @@
   "homepage": "https://github.com/Samojo3303/461Project#readme",
   "dependencies": {
     "chai": "^5.1.1",
+    "fs": "^0.0.1-security",
+    "isomorphic-git": "^1.27.1",
     "mocha": "^10.7.3",
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
+    "@eslint/js": "^9.10.0",
+    "@types/eslint__js": "^8.42.3",
     "@types/node": "^22.5.4",
+    "eslint": "^9.10.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.4.0"
   }
 }
