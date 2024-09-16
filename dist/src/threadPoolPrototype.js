@@ -1,23 +1,13 @@
-"use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-Object.defineProperty(exports, "__esModule", { value: true });
 // Import necessary modules from Node.js
-const worker_threads_1 = require("worker_threads");
+import { Worker, isMainThread, parentPort } from 'worker_threads';
 // ThreadPool class manages a pool of workers to handle concurrent tasks
 class ThreadPool {
+    poolSize;
+    workers = [];
+    taskQueue = [];
+    activeTasks = 0;
     constructor(poolSize) {
         this.poolSize = poolSize;
-        this.workers = [];
-        this.taskQueue = [];
-        this.activeTasks = 0;
         this.initializeWorkers();
     }
     // Initialize workers based on the pool size
@@ -28,7 +18,7 @@ class ThreadPool {
     }
     // Create a new worker and manage its lifecycle
     createWorker() {
-        const worker = new worker_threads_1.Worker(__filename);
+        const worker = new Worker(__filename);
         worker.on('message', () => {
             this.activeTasks--;
             this.executeNextTask();
@@ -73,20 +63,20 @@ class ThreadPool {
     }
 }
 // Worker code to handle tasks
-if (!worker_threads_1.isMainThread) {
-    worker_threads_1.parentPort === null || worker_threads_1.parentPort === void 0 ? void 0 : worker_threads_1.parentPort.on('message', (_a) => __awaiter(void 0, [_a], void 0, function* ({ task }) {
+if (!isMainThread) {
+    parentPort?.on('message', async ({ task }) => {
         const taskFunc = eval(`(${task})`); // Convert the string back to a function
         try {
-            yield taskFunc(); // Execute the task
-            worker_threads_1.parentPort === null || worker_threads_1.parentPort === void 0 ? void 0 : worker_threads_1.parentPort.postMessage('done');
+            await taskFunc(); // Execute the task
+            parentPort?.postMessage('done');
         }
         catch (error) {
-            worker_threads_1.parentPort === null || worker_threads_1.parentPort === void 0 ? void 0 : worker_threads_1.parentPort.postMessage('error');
+            parentPort?.postMessage('error');
         }
-    }));
+    });
 }
 // Main thread code
-if (worker_threads_1.isMainThread) {
+if (isMainThread) {
     const poolSize = 4; // Number of concurrent workers
     const threadPool = new ThreadPool(poolSize);
     // Example tasks

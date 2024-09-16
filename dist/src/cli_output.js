@@ -1,15 +1,12 @@
+"use strict";
 // // Import yargs and other dependencies
 // import yargs from 'yargs';
 // import { hideBin } from 'yargs/helpers';
-
 // import { calculateRampUp } from './metrics/rampUpTime';
 // import { calculateCorrectness } from './metrics/correctness';
 // import { calculateBusFactor } from './metrics/busFactor';
 // import { calculateResponsiveness } from './metrics/responsiveness';
 // import { calculateLicenseCompatibility } from './metrics/licenseCompatability';
-
-
-
 // // Define the CLI commands and options
 // yargs(hideBin(process.argv))
 //     .command(
@@ -29,7 +26,6 @@
 //             const busFactorScore = await calculateBusFactor(argv.url);
 //             const responsivenessScore = await calculateResponsiveness(argv.url);
 //             const licenseCompatibilityScore = await calculateLicenseCompatibility(argv.url);
-
 //             // Combine the results into a final object
 //             const result = {
 //                 URL: argv.url,
@@ -40,16 +36,13 @@
 //                 Responsiveness: responsivenessScore,
 //                 LicenseCompatibility: licenseCompatibilityScore
 //             };
-
 //             // Output the result in JSON format
 //             console.log(JSON.stringify(result, null, 2));
 //         }
 //     )
 //     .help()
 //     .argv;
-
 // // compile with
 // // npx tsc cli.ts
-
 // // run with
 // // node cli.js evaluate --url=https://github.com/user/repo

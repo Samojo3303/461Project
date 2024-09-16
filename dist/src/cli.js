@@ -1,14 +1,9 @@
-"use strict";
 // cli.ts
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
 // Step 1: Import yargs
-const yargs_1 = __importDefault(require("yargs"));
-const helpers_1 = require("yargs/helpers");
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
 // Step 2: Define commands and options
-(0, yargs_1.default)((0, helpers_1.hideBin)(process.argv))
+yargs(hideBin(process.argv))
     .command('greet [name]', // Command name and positional argument
 'Greet the user by name', // Command description
 (yargs) => {

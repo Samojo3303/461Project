@@ -1,6 +1,7 @@
 {
   "name": "461project",
   "version": "1.0.0",
+  "type": "module",
   "description": "| Group members| |--------------| |Samuel Johnson| |Jana Gamal| |Doha Hafez| |Harrison Smith|",
   "main": "index.js",
   "scripts": {
