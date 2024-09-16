@@ -43,7 +43,8 @@ function main() {
             console.error("No valid URLs found.");
         }
     } catch (error) {
-        console.error(`Error: ${error.message}`);
+        const err = error as Error;  // Type assertion
+        console.error(`Error: ${err.message}`);
         process.exit(1);
     }
 }

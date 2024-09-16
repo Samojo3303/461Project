@@ -1,4 +1,4 @@
-import { GitHubClient } from './githubClient.js';
+import { GitHubClient } from '../githubClient.js';
 import * as dotenv from 'dotenv';
 dotenv.config();
 

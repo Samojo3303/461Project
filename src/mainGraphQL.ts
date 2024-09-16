@@ -1,6 +1,6 @@
-import { metricBusFactor } from './metricBusFactor.js';
-import { metricResponsiveness } from './metricResponsiveness.js';
-import { metricRampUpTime } from './metricRampUpTime.js';
+import { metricBusFactor } from './metrics/metricBusFactor.js';
+import { metricResponsiveness } from './metrics/metricResponsiveness.js';
+import { metricRampUpTime } from './metrics/metricRampUpTime.js';
 import { exec } from 'child_process';
 
 let url = 'https://github.com/Samojo3303/461Project';

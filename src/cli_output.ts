@@ -5,10 +5,10 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 //import { calculateModuleScore } from './moduleEvaluator'; // Hypothetical module for evaluating scores
 
-import { calculateRampUp } from './metrics/rampUpTime';
+import { calculateRampUp } from './metrics/metricRampUpTime';
 import { calculateCorrectness } from './metrics/correctness';
 import { calculateBusFactor } from './metrics/busFactor';
-import { calculateResponsiveness } from './metrics/responsiveness';
+import { calculateResponsiveness } from './metrics/metricResponsiveness';
 import { calculateLicenseCompatibility } from './metrics/licenseCompatability';
 
 
