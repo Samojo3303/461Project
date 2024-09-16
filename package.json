@@ -18,8 +18,12 @@
   "homepage": "https://github.com/Samojo3303/461Project#readme",
   "dependencies": {
     "chai": "^5.1.1",
+    "express": "^4.20.0",
+    "express-graphql": "^0.12.0",
+    "graphql": "^16.9.0",
     "mocha": "^10.7.3",
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^3.3.2",
+    "node.js": "^0.0.1-security"
   },
   "devDependencies": {
     "@types/node": "^22.5.4",
