@@ -1,36 +1,33 @@
-import * as fs from 'fs-extra';
 import * as git from 'isomorphic-git';
-import http from 'isomorphic-git/http/node';
-import path from 'path';
+import fs from 'fs';
 
-// Define the repository directory
-const REPO_DIR = path.join(__dirname, 'repo');
+// Analyze Commit Activity Density (CAD)
+export async function calculateCAD(localPath: string): Promise<number> {
+  try {
+    // Get commit history
+    const log = await git.log({ fs, dir: localPath });
 
-export async function cloneRepository(repoUrl: string): Promise<void> {
-  if (fs.existsSync(REPO_DIR)) {
-    await fs.remove(REPO_DIR);
+    if (log.length === 0) {
+      return 0; // No commits, so CAD is 0
+    }
+
+    // Get the date of the first and last commit
+    const firstCommitDate = new Date(log[log.length - 1].commit.author.timestamp * 1000);
+    const lastCommitDate = new Date(log[0].commit.author.timestamp * 1000);
+
+    // Calculate the repository age in days
+    const repoAgeInDays = Math.max((lastCommitDate.getTime() - firstCommitDate.getTime()) / (1000 * 60 * 60 * 24), 1); // To avoid division by zero
+
+    // Calculate commits per day
+    const commitsPerDay = log.length / repoAgeInDays;
+
+    // Normalize the CAD
+    const maxCAD = 5;
+    const normalizedCAD = Math.min(commitsPerDay / maxCAD, 1);
+
+    return normalizedCAD;
+  } catch (error) {
+    console.error(`Failed to calculate CAD:`, error);
+    throw error;
   }
-  await fs.ensureDir(REPO_DIR);
-
-  await git.clone({
-    fs,
-    http,
-    dir: REPO_DIR,
-    url: repoUrl,
-    singleBranch: true,
-    depth: 1,
-  });
-}
-
-export async function getRepositoryInfo(): Promise<any> {
-  const commits = await git.log({
-    fs,
-    dir: REPO_DIR,
-  });
-  return commits;
-}
-
-export async function checkRepositoryCorrectness(): Promise<boolean> {
-  const info = await getRepositoryInfo();
-  return info.length > 0; // Basic check, you can expand this.
 }

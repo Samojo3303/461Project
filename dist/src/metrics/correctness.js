@@ -31,56 +31,37 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.calculateCAD = calculateCAD;
 const git = __importStar(require("isomorphic-git"));
-const http = __importStar(require("isomorphic-git/http/node"));
-const fs = __importStar(require("fs"));
-const child_process_1 = require("child_process");
-const util_1 = require("util");
-const execPromise = (0, util_1.promisify)(child_process_1.exec);
-// Utility function to clone the repository
-function cloneRepository(repoUrl, localDir) {
-    return __awaiter(this, void 0, void 0, function* () {
-        if (fs.existsSync(localDir)) {
-            fs.rmSync(localDir, { recursive: true, force: true });
-        }
-        fs.mkdirSync(localDir);
-        yield git.clone({
-            fs,
-            http,
-            dir: localDir,
-            url: repoUrl,
-            singleBranch: true,
-            depth: 1
-        });
-    });
-}
-// Utility function to run Jest tests
-function runTests(dir) {
+const fs_1 = __importDefault(require("fs"));
+// Analyze Commit Activity Density (CAD)
+function calculateCAD(localPath) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const { stdout, stderr } = yield execPromise('npx jest', { cwd: dir });
-            console.log('Jest output:', stdout);
-            if (stderr) {
-                console.error('Jest errors:', stderr);
+            // Get commit history
+            const log = yield git.log({ fs: fs_1.default, dir: localPath });
+            if (log.length === 0) {
+                return 0; // No commits, so CAD is 0
             }
+            // Get the date of the first and last commit
+            const firstCommitDate = new Date(log[log.length - 1].commit.author.timestamp * 1000);
+            const lastCommitDate = new Date(log[0].commit.author.timestamp * 1000);
+            // Calculate the repository age in days
+            const repoAgeInDays = Math.max((lastCommitDate.getTime() - firstCommitDate.getTime()) / (1000 * 60 * 60 * 24), 1); // To avoid division by zero
+            // Calculate commits per day
+            const commitsPerDay = log.length / repoAgeInDays;
+            // Normalize the CAD
+            const maxCAD = 5;
+            const normalizedCAD = Math.min(commitsPerDay / maxCAD, 1);
+            return normalizedCAD;
         }
         catch (error) {
-            console.error('Error running Jest:', error);
+            console.error(`Failed to calculate CAD:`, error);
+            throw error;
         }
     });
 }
-// Main function to test a package
-function testPackage(repoUrl) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const localDir = './temp-repo';
-        yield cloneRepository(repoUrl, localDir);
-        // Run `npm install` if needed
-        yield execPromise('npm install', { cwd: localDir });
-        // Run Jest tests
-        yield runTests(localDir);
-    });
-}
-// Example usage
-const repoUrl = 'https://github.com/lodash/lodash'; // Replace with the actual repository URL
-testPackage(repoUrl).catch(console.error);
