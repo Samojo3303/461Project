@@ -10,7 +10,7 @@ import path from 'path';
 import { exec } from 'child_process';
 
 // Main function to execute the metrics and repository analysis
-async function main(url: string) {
+async function analyzeURL(url: string) {
   const originalUrl = url;
   const loc = checkURL(url);
 
@@ -20,7 +20,7 @@ async function main(url: string) {
       url = await getGitHubFromNpm(packageName);
     } catch (error) {
       console.error(error);
-      process.exit(1);
+      return null; // Indicate failure
     }
   }
 
@@ -71,15 +71,14 @@ async function main(url: string) {
         License_Latency: repoLatency
       };
 
-      console.log(JSON.stringify(output));
-      process.exit(0);
+      return output;
     } catch (error) {
       console.error('Error during analysis:', error);
-      process.exit(1);
+      return null; // Indicate failure
     }
   } else {
     console.log('Invalid URL');
-    process.exit(1);
+    return null; // Indicate failure
   }
 }
 
@@ -114,7 +113,6 @@ async function getGitHubFromNpm(packageName: string) {
       }
 
       let repoUrl = stdout.trim();
-      // Normalize the URL to use https protocol
       repoUrl = repoUrl.replace(/^git\+/, '');
 
       if (repoUrl) {
@@ -125,7 +123,6 @@ async function getGitHubFromNpm(packageName: string) {
     });
   });
 }
-
 
 function checkURL(link: string): 'Run' | 'npm' | 'Invalid URL' {
   try {
@@ -148,19 +145,12 @@ function checkURL(link: string): 'Run' | 'npm' | 'Invalid URL' {
 async function analyzeRepo(gitUrl: string) {
   const localPath = path.join('./temp-repo');
 
-  // Clone the repository
   await cloneRepository(gitUrl, localPath);
 
-  // Analyze contributors
   const contributorScore = await analyzeContributors(localPath);
-
-  // Analyze license
   const licenseScore = await analyzeLicense(localPath);
-
-  // Calculate Commit Activity Density (CAD)
   const cadScore = await calculateCAD(localPath);
 
-  // Clean up the repository after analysis
   cleanDirectory(localPath);
 
   return { contributorScore, licenseScore, cadScore };
@@ -193,6 +183,31 @@ async function cloneRepository(gitUrl: string, localPath: string) {
   }
 }
 
-// Execute main function with the URL to analyze
-const urlToAnalyze = 'https://www.npmjs.com/package/express';
-main(urlToAnalyze);
+// Process the URL_FILE and analyze each URL
+async function processUrlFile(filePath: string) {
+  try {
+    const urls = fs.readFileSync(filePath, 'utf8').split('\n').filter(Boolean);
+
+    for (const url of urls) {
+      const result = await analyzeURL(url);
+      if (result) {
+        console.log(JSON.stringify(result));
+      }
+    }
+
+    process.exit(0);
+  } catch (error) {
+    console.error('Error processing URL file:', error);
+    process.exit(1);
+  }
+}
+
+// Check for command-line arguments
+const args = process.argv.slice(2);
+if (args.length !== 1) {
+  console.error('Usage: ./run URL_FILE');
+  process.exit(1);
+}
+
+const urlFilePath = args[0];
+processUrlFile(urlFilePath);
