@@ -9,11 +9,11 @@ if (!token) {
 const client = new GitHubClient(token);
 
 export interface RepositoryQueryResponse {
-    data: {
-      repository: Repository;
-    };
-  }
-  
+  data: {
+    repository: Repository;
+  };
+}
+
 export interface Repository {
   defaultBranchRef: {
     target: {
@@ -88,7 +88,7 @@ const stats = {
   list_files: [] as Array<number>
 };
 
-export async function metricRampUpTime(variables: {owner: string, name: string} ): Promise<number> {
+export async function metricRampUpTime(variables: { owner: string, name: string }): Promise<number> {
   return client.request<RepositoryQueryResponse>(query, variables)
     .then(response => {
       if (response.data && response.data.repository) { //IF REPOSITORY DATA IS AVAILABLE
@@ -127,7 +127,7 @@ export async function metricRampUpTime(variables: {owner: string, name: string} 
         console.error("Repository data is undefined");
       }
 
-      console.log(`Files: ${stats.amt_files}`);
+      //console.log(`Files: ${stats.amt_files}`);
 
       return calcRampUpTime(stats);
     })
@@ -143,8 +143,8 @@ function calcRampUpTime(stats: any): number {
   //50% FILE SIZE: 1 if avg file size < 10KB, 0 if > 1000KB
   let files: number = 1 - clampAndFit01(stats.amt_files, 5, 300); //fit files 0-1 from 5-300
   let avg_file_size: number = (stats.list_files as number[]).reduce((acc, num) => acc + num, 0) / stats.list_files.length;
-  
-  console.log(`Average file size: ` + Math.round(avg_file_size/1000) + `KB`);
+
+  //console.log(`Average file size: ` + Math.round(avg_file_size/1000) + `KB`);
 
   avg_file_size = 1 - clampAndFit01(avg_file_size, 10000, 1000000); //fit file size 0-1 from 10KB-1000KB
   let mRampUpTime: number = (0.5 * files) + (0.5 * avg_file_size);

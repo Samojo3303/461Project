@@ -8,36 +8,71 @@ import fs from 'fs';
 import http from 'isomorphic-git/http/node/index.js';
 import path from 'path';
 import { exec } from 'child_process';
-// URL to analyze
-let url = 'https://github.com/lodash/lodash';
-// Check the type of URL (npm or GitHub)
-let loc = checkURL(url);
-if (loc == 'npm') {
-    const packageName = parseNpmLink(url);
-    await getGitHubFromNpm(packageName)
-        .then(repoUrl => {
-        url = repoUrl;
-        loc = 'Run';
-    })
-        .catch(error => console.error(error));
-}
-if (loc == 'npm' || loc == 'Run') {
-    const { owner, name } = parseGitHubLink(url);
-    const variables = {
-        owner, name
-    };
-    // Run metrics
-    const responsiveness = await metricResponsiveness(variables);
-    const rampUpTime = await metricRampUpTime(variables);
-    console.log('-----------');
-    console.log(`Responsiveness: ${responsiveness.toFixed(2)}`);
-    console.log(`Ramp-up time: ${rampUpTime.toFixed(2)}`);
-    console.log('-----------');
-    // Analyze repository
-    await analyzeRepo(url);
-}
-else {
-    console.log('Invalid URL');
+// Main function to execute the metrics and repository analysis
+async function main(url) {
+    const originalUrl = url;
+    const loc = checkURL(url);
+    if (loc === 'npm') {
+        const packageName = parseNpmLink(url);
+        try {
+            url = await getGitHubFromNpm(packageName);
+        }
+        catch (error) {
+            console.error(error);
+            process.exit(1);
+        }
+    }
+    if (loc === 'npm' || loc === 'Run') {
+        const { owner, name } = parseGitHubLink(url);
+        const variables = { owner, name };
+        try {
+            // Measure and run metrics
+            const responsivenessStartTime = Date.now();
+            const responsiveness = await metricResponsiveness(variables);
+            const responsivenessLatency = ((Date.now() - responsivenessStartTime) / 1000).toFixed(3);
+            const rampUpStartTime = Date.now();
+            const rampUpTime = await metricRampUpTime(variables);
+            const rampUpLatency = ((Date.now() - rampUpStartTime) / 1000).toFixed(3);
+            // Analyze repository
+            const repoStartTime = Date.now();
+            const results = await analyzeRepo(url);
+            const repoLatency = ((Date.now() - repoStartTime) / 1000).toFixed(3);
+            const { contributorScore, licenseScore, cadScore } = results;
+            // Define weights for correctness metrics
+            const weights = { contributor: 0.3, license: 0.3, cad: 0.4 };
+            // Calculate overall NetScore
+            const netScore = (contributorScore * weights.contributor) +
+                (licenseScore * weights.license) +
+                (cadScore * weights.cad);
+            const netScoreLatency = ((Date.now() - responsivenessStartTime) / 1000).toFixed(3);
+            // Output as NDJSON
+            const output = {
+                URL: originalUrl,
+                NetScore: netScore.toFixed(3),
+                NetScore_Latency: netScoreLatency,
+                RampUp: rampUpTime.toFixed(3),
+                RampUp_Latency: rampUpLatency,
+                Correctness: netScore.toFixed(3),
+                Correctness_Latency: netScoreLatency,
+                BusFactor: contributorScore.toFixed(3),
+                BusFactor_Latency: repoLatency,
+                ResponsiveMaintainer: responsiveness.toFixed(3),
+                ResponsiveMaintainer_Latency: responsivenessLatency,
+                License: licenseScore.toFixed(3),
+                License_Latency: repoLatency
+            };
+            console.log(JSON.stringify(output));
+            process.exit(0);
+        }
+        catch (error) {
+            console.error('Error during analysis:', error);
+            process.exit(1);
+        }
+    }
+    else {
+        console.log('Invalid URL');
+        process.exit(1);
+    }
 }
 // Helper functions
 function parseGitHubLink(link) {
@@ -66,12 +101,14 @@ async function getGitHubFromNpm(packageName) {
                 reject(`Error: ${stderr}`);
                 return;
             }
-            const repoUrl = stdout.trim();
+            let repoUrl = stdout.trim();
+            // Normalize the URL to use https protocol
+            repoUrl = repoUrl.replace(/^git\+/, '');
             if (repoUrl) {
                 resolve(repoUrl);
             }
             else {
-                resolve(`No GitHub repository link found for package: ${packageName}`);
+                reject(`No GitHub repository link found for package: ${packageName}`);
             }
         });
     });
@@ -87,10 +124,10 @@ function checkURL(link) {
             return 'npm';
         }
         else {
-            return 'Unknown Source';
+            return 'Invalid URL';
         }
     }
-    catch (error) {
+    catch {
         return 'Invalid URL';
     }
 }
@@ -101,22 +138,13 @@ async function analyzeRepo(gitUrl) {
     await cloneRepository(gitUrl, localPath);
     // Analyze contributors
     const contributorScore = await analyzeContributors(localPath);
-    console.log(`Contributor Score: ${contributorScore}`);
     // Analyze license
     const licenseScore = await analyzeLicense(localPath);
-    console.log(`License Score: ${licenseScore}`);
     // Calculate Commit Activity Density (CAD)
     const cadScore = await calculateCAD(localPath);
-    console.log(`Commit Activity Density (CAD) Score: ${cadScore.toFixed(2)}`);
     // Clean up the repository after analysis
     cleanDirectory(localPath);
-    // Weights for each factor in the correctness score
-    const weights = { contributor: 0.3, license: 0.3, cad: 0.4 };
-    // Calculate overall correctness score
-    const correctnessScore = (contributorScore * weights.contributor) +
-        (licenseScore * weights.license) +
-        (cadScore * weights.cad);
-    console.log(`Overall Correctness Score: ${correctnessScore.toFixed(2)} (0 = low, 1 = high)`);
+    return { contributorScore, licenseScore, cadScore };
 }
 function cleanDirectory(localPath) {
     if (fs.existsSync(localPath)) {
@@ -134,7 +162,6 @@ async function cloneRepository(gitUrl, localPath) {
             singleBranch: true,
             depth: 1,
         });
-        console.log(`Repository cloned to ${localPath}`);
     }
     catch (error) {
         if (error instanceof Error) {
@@ -146,3 +173,6 @@ async function cloneRepository(gitUrl, localPath) {
         throw error;
     }
 }
+// Execute main function with the URL to analyze
+const urlToAnalyze = 'https://www.npmjs.com/package/express';
+main(urlToAnalyze);

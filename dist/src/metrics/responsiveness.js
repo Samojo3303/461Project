@@ -74,10 +74,10 @@ function calcResponsiveness(stats) {
     for (let i = 0; i < periods.length - 1; i++) {
         periods_diff.push(Math.abs(periods[i] - periods[i + 1]));
     }
-    console.log('Most recent commit: ' + Math.min(...periods) + ' days ago');
+    //console.log('Most recent commit: ' + Math.min(...periods) + ' days ago');
     let recency = 1 - clampAndFit01(Math.min(...periods), 14, 365 * 3); //fit most recent commit date 0-1 from 2 weeks-3 years
     let frequency = periods_diff.reduce((acc, num) => acc + num, 0) / periods_diff.length;
-    console.log('Avg commit period: ' + Math.round(frequency) + ' days');
+    //console.log('Avg commit period: ' + Math.round(frequency) + ' days');
     frequency = 1 - clampAndFit01(frequency, 7 * 2, 7 * 15); //fit average days between commits 0-1 from 2-15 weeks
     let mResponsiveness = (0.4 * recency) + (0.6 * frequency);
     return mResponsiveness;

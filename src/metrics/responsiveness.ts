@@ -9,11 +9,11 @@ if (!token) {
 const client = new GitHubClient(token);
 
 export interface RepositoryQueryResponse {
-    data: {
-      repository: Repository;
-    };
-  }
-  
+  data: {
+    repository: Repository;
+  };
+}
+
 export interface Repository {
   defaultBranchRef: {
     target: {
@@ -62,12 +62,12 @@ const stats = {
   list_commits_dates: [] as Array<Date>,
 };
 
-export async function metricResponsiveness(variables: {owner: string, name: string} ): Promise<number> {
+export async function metricResponsiveness(variables: { owner: string, name: string }): Promise<number> {
   return client.request<RepositoryQueryResponse>(query, variables, stats)
     .then(response => {
       if (response.data && response.data.repository) { //IF REPOSITORY DATA IS AVAILABLE
         if (response.data.repository.defaultBranchRef && response.data.repository.defaultBranchRef.target) { //IF BRANCH DATA IS AVAILABLE
-          if(response.data.repository.defaultBranchRef.target.history) { //IF COMMIT HISTORY IS AVAILABLE
+          if (response.data.repository.defaultBranchRef.target.history) { //IF COMMIT HISTORY IS AVAILABLE
             response.data.repository.defaultBranchRef.target.history.edges.forEach(edge => {
               stats.list_commits_dates.push(new Date(edge.node.committedDate)); //lists_commits_dates INSERT
             });
@@ -104,14 +104,14 @@ function calcResponsiveness(stats: any): number {
     periods_diff.push(Math.abs(periods[i] - periods[i + 1]));
   }
 
-  console.log('Most recent commit: ' + Math.min(...periods) + ' days ago');
+  //console.log('Most recent commit: ' + Math.min(...periods) + ' days ago');
 
-  let recency = 1 - clampAndFit01(Math.min(...periods), 14, 365*3); //fit most recent commit date 0-1 from 2 weeks-3 years
+  let recency = 1 - clampAndFit01(Math.min(...periods), 14, 365 * 3); //fit most recent commit date 0-1 from 2 weeks-3 years
   let frequency = periods_diff.reduce((acc, num) => acc + num, 0) / periods_diff.length;
 
-  console.log('Avg commit period: ' + Math.round(frequency) + ' days');
+  //console.log('Avg commit period: ' + Math.round(frequency) + ' days');
 
-  frequency = 1 -  clampAndFit01(frequency, 7*2, 7*15); //fit average days between commits 0-1 from 2-15 weeks
+  frequency = 1 - clampAndFit01(frequency, 7 * 2, 7 * 15); //fit average days between commits 0-1 from 2-15 weeks
   let mResponsiveness: number = (0.4 * recency) + (0.6 * frequency);
 
   return mResponsiveness;
