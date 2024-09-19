@@ -30,10 +30,10 @@ const query = `
     }
   }
 `;
-const stats = {
-    list_commits_dates: [],
-};
 export async function metricResponsiveness(variables) {
+    const stats = {
+        list_commits_dates: [],
+    };
     return client.request(query, variables, stats)
         .then(response => {
         if (response.data && response.data.repository) { //IF REPOSITORY DATA IS AVAILABLE
