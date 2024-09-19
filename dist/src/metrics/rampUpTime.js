@@ -1,7 +1,7 @@
 import { GitHubClient } from '../githubClient.js';
 import * as dotenv from 'dotenv';
 dotenv.config();
-const token = process.env.TOKEN;
+const token = process.env.GITHUB_TOKEN;
 if (!token) {
     throw new Error("GitHub token is not defined in environment variables");
 }
@@ -100,7 +100,10 @@ export async function metricRampUpTime(variables) {
         return calcRampUpTime(stats);
     })
         .catch(error => {
-        console.error(error);
+        console.error('Error fetching repository data:', error);
+        if (error.response) {
+            console.error('Response data:', error.response.data);
+        }
         throw error;
     });
 }

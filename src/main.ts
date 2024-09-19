@@ -3,6 +3,7 @@ import { metricRampUpTime } from './metrics/rampUpTime.js';
 import { analyzeContributors } from './metrics/busFactor.js';
 import { analyzeLicense } from './metrics/licenseCompatability.js';
 import { calculateCAD } from './metrics/correctness.js';
+import logger from './logger.js';
 import * as git from 'isomorphic-git';
 import fs from 'fs';
 import http from 'isomorphic-git/http/node/index.js';

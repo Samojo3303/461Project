@@ -1,7 +1,7 @@
 import { GitHubClient } from '../githubClient.js';
 import * as dotenv from 'dotenv';
 dotenv.config();
-const token = process.env.TOKEN;
+const token = process.env.GITHUB_TOKEN;
 if (!token) {
     throw new Error("GitHub token is not defined in environment variables");
 }

@@ -3,9 +3,7 @@
 # Check for the "install" command
 if [ "$1" == "install" ]; then
   echo "Installing dependencies..."
-  # Install dependencies in userland (modify this based on your project's needs)
   npm install --legacy-peer-deps
-  # Check the exit code of the installation command
   if [ $? -eq 0 ]; then
     exit 0
   else
