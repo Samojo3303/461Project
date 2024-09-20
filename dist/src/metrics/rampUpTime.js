@@ -113,7 +113,7 @@ function calcRampUpTime(stats) {
     //50% FILE SIZE: 1 if avg file size < 10KB, 0 if > 1000KB
     let files = 1 - clampAndFit01(stats.amt_files, 5, 300); //fit files 0-1 from 5-300
     let avg_file_size = stats.list_files.reduce((acc, num) => acc + num, 0) / stats.list_files.length;
-    //console.log(`Average file size: ` + Math.round(avg_file_size/1000) + `KB`);
+    //console.log(`Average file size: ` + Math.round(avg_file_size / 1000) + `KB`);
     avg_file_size = 1 - clampAndFit01(avg_file_size, 10000, 1000000); //fit file size 0-1 from 10KB-1000KB
     let mRampUpTime = (0.5 * files) + (0.5 * avg_file_size);
     return mRampUpTime;

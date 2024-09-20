@@ -24,4 +24,3 @@ export class GitHubClient {
     return response.json() as Promise<T>;
   }
 }
-  

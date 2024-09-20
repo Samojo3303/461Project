@@ -1,6 +1,6 @@
 import { metricResponsiveness } from './metrics/responsiveness.js';
 import { metricRampUpTime } from './metrics/rampUpTime.js';
-import { analyzeContributors } from './metrics/busFactor.js';
+import { metricBusFactor } from './metrics/busFactor.js';
 import { analyzeLicense } from './metrics/licenseCompatability.js';
 import { calculateCAD } from './metrics/correctness.js';
 import * as git from 'isomorphic-git';
@@ -33,17 +33,20 @@ async function analyzeURL(url) {
             const rampUpStartTime = Date.now();
             const rampUpTime = await metricRampUpTime(variables);
             const rampUpLatency = ((Date.now() - rampUpStartTime) / 1000).toFixed(3);
+            const busFactorStartTime = Date.now();
+            const busFactor = await metricBusFactor(variables);
+            const busFactorLatency = ((Date.now() - busFactorStartTime) / 1000).toFixed(3);
             // Analyze repository
             const repoStartTime = Date.now();
             const results = await analyzeRepo(url);
             const repoLatency = ((Date.now() - repoStartTime) / 1000).toFixed(3);
-            const { contributorScore, licenseScore, cadScore } = results;
+            const { licenseScore, cadScore } = results;
             // Define weights for metrics
             const weights = { rampUp: 0.2, correctness: 0.2, busFactor: 0.2, responsiveness: 0.2, license: 0.2 };
             // Calculate overall NetScore
             const netScore = (rampUpTime * weights.rampUp) +
                 (cadScore * weights.correctness) +
-                (contributorScore * weights.busFactor) +
+                (busFactor * weights.busFactor) +
                 (responsiveness * weights.responsiveness) +
                 (licenseScore * weights.license);
             const netScoreLatency = ((Date.now() - responsivenessStartTime) / 1000).toFixed(3);
@@ -54,10 +57,10 @@ async function analyzeURL(url) {
                 NetScore_Latency: netScoreLatency,
                 RampUp: rampUpTime.toFixed(3),
                 RampUp_Latency: rampUpLatency,
-                Correctness: netScore.toFixed(3),
-                Correctness_Latency: netScoreLatency,
-                BusFactor: contributorScore.toFixed(3),
-                BusFactor_Latency: repoLatency,
+                Correctness: cadScore.toFixed(3),
+                Correctness_Latency: repoLatency,
+                BusFactor: busFactor.toFixed(3),
+                BusFactor_Latency: busFactorLatency,
                 ResponsiveMaintainer: responsiveness.toFixed(3),
                 ResponsiveMaintainer_Latency: responsivenessLatency,
                 License: licenseScore.toFixed(3),
@@ -135,11 +138,10 @@ function checkURL(link) {
 async function analyzeRepo(gitUrl) {
     const localPath = path.join('./temp-repo');
     await cloneRepository(gitUrl, localPath);
-    const contributorScore = await analyzeContributors(localPath);
     const licenseScore = await analyzeLicense(localPath);
     const cadScore = await calculateCAD(localPath);
     cleanDirectory(localPath);
-    return { contributorScore, licenseScore, cadScore };
+    return { licenseScore, cadScore };
 }
 function cleanDirectory(localPath) {
     if (fs.existsSync(localPath)) {
