@@ -10,8 +10,16 @@ const client = new GitHubClient(token);
 
 export interface RepositoryQueryResponse {
   data: {
-    repository: Repository;
+    repository: Repository,
+    rateLimit: RateLimit;
   };
+}
+
+export interface RateLimit {
+  limit: number;
+  cost: number;
+  remaining: number;
+  resetAt: string;
 }
 
 export interface Repository {
@@ -35,6 +43,12 @@ export interface Repository {
 
 const query = `
   query GetRepoDetails($owner: String!, $name: String!) {
+    rateLimit {
+    limit
+    cost
+    remaining
+    resetAt
+    }  
     repository(owner: $owner, name: $name) {
       defaultBranchRef {
         target {
@@ -81,7 +95,11 @@ export async function metricResponsiveness(variables: { owner: string, name: str
       else {
         console.error("Repository data is undefined");
       }
-
+      const rateLimit = response.data.rateLimit;
+      // console.log(`Rate Limit: ${rateLimit.limit}`);
+      // console.log(`Cost: ${rateLimit.cost}`);
+      // console.log(`Remaining: ${rateLimit.remaining}`);
+      // console.log(`Reset At: ${rateLimit.resetAt}`);
       return calcResponsiveness(stats);
     })
     .catch(error => {

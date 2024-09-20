@@ -8,6 +8,12 @@ if (!token) {
 const client = new GitHubClient(token);
 const query = `
   query GetRepoDetails($owner: String!, $name: String!) {
+    rateLimit {
+    limit
+    cost
+    remaining
+    resetAt
+    }  
     repository(owner: $owner, name: $name) {
       defaultBranchRef {
         target {
@@ -55,6 +61,11 @@ export async function metricBusFactor(variables) {
         else {
             console.error("Repository data is undefined");
         }
+        const rateLimit = response.data.rateLimit;
+        // console.log(`Rate Limit: ${rateLimit.limit}`);
+        // console.log(`Cost: ${rateLimit.cost}`);
+        // console.log(`Remaining: ${rateLimit.remaining}`);
+        // console.log(`Reset At: ${rateLimit.resetAt}`);
         return calcBusFactor(stats);
     })
         .catch(error => {

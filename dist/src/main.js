@@ -154,6 +154,10 @@ async function cloneRepository(gitUrl, localPath) {
     if (gitUrl.startsWith('ssh://')) {
         gitUrl = gitUrl.replace(/^ssh:\/\/git@github.com\//, 'https://github.com/');
     }
+    // Replace git protocol with https
+    if (gitUrl.startsWith('git://')) {
+        gitUrl = gitUrl.replace(/^git:\/\//, 'https://');
+    }
     try {
         await git.clone({
             fs,
