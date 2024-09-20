@@ -45,14 +45,16 @@ async function analyzeURL(url: string) {
       const repoLatency = ((Date.now() - repoStartTime) / 1000).toFixed(3);
       const { contributorScore, licenseScore, cadScore } = results;
 
-      // Define weights for correctness metrics
-      const weights = { contributor: 0.3, license: 0.3, cad: 0.4 };
+      // Define weights for metrics
+      const weights = { rampUp: 0.2, correctness: 0.2, busFactor: 0.2, responsiveness: 0.2, license: 0.2 };
 
       // Calculate overall NetScore
       const netScore =
-        (contributorScore * weights.contributor) +
-        (licenseScore * weights.license) +
-        (cadScore * weights.cad);
+        (rampUpTime * weights.rampUp) +
+        (cadScore * weights.correctness) +
+        (contributorScore * weights.busFactor) +
+        (responsiveness * weights.responsiveness) +
+        (licenseScore * weights.license);
       const netScoreLatency = ((Date.now() - responsivenessStartTime) / 1000).toFixed(3);
 
       // Output as NDJSON
