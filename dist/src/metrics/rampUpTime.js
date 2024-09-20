@@ -51,11 +51,11 @@ const query = `
     }
   }
 `;
+const stats = {
+    amt_files: 0,
+    list_files: []
+};
 export async function metricRampUpTime(variables) {
-    const stats = {
-        amt_files: 0,
-        list_files: []
-    };
     return client.request(query, variables)
         .then(response => {
         if (response.data && response.data.repository) { //IF REPOSITORY DATA IS AVAILABLE
