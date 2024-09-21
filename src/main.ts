@@ -3,19 +3,17 @@ import { metricRampUpTime } from './metrics/rampUpTime.js';
 import { metricBusFactor } from './metrics/busFactor.js';
 import { analyzeLicense } from './metrics/licenseCompatability.js';
 import { calculateCAD } from './metrics/correctness.js';
-import logger from './logger.js';
 import * as git from 'isomorphic-git';
 import fs from 'fs';
 import http from 'isomorphic-git/http/node/index.js';
 import path from 'path';
 import axios from 'axios';
-import { sourceMapsEnabled } from 'process';
+import { logMessage } from '../log.js';
 
 // Main function to execute the metrics and repository analysis
 async function analyzeURL(url: string) {
   const originalUrl = url;
   const loc = checkURL(url);
-
   if (loc === 'npm') {
     const packageName = parseNpmLink(url);
     try {

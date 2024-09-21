@@ -8,15 +8,16 @@ import fs from 'fs';
 import http from 'isomorphic-git/http/node/index.js';
 import path from 'path';
 import axios from 'axios';
+import { logMessage } from '../log.js';
 // Main function to execute the metrics and repository analysis
 async function analyzeURL(url) {
     const originalUrl = url;
     const loc = checkURL(url);
+    logMessage(1, 'Hello');
     if (loc === 'npm') {
         const packageName = parseNpmLink(url);
         try {
             url = await getGitHubFromNpmAxios(packageName);
-            console.log(url);
         }
         catch (error) {
             console.error(error);
@@ -126,7 +127,6 @@ async function getGitHubFromNpmAxios(packageName) {
         .then(response => {
         let repoUrl = response.data.repository.url;
         repoUrl = repoUrl.replace(/^git\+/, "");
-        console.log("Hello");
         if (repoUrl) {
             return repoUrl;
         }
