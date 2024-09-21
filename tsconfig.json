@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
-    "target": "ESNext",
+    "module": "ESNext", // Keep this as ESNext for top-level await
+    "target": "ESNext", // Keep target as ESNext for the latest features
     "moduleResolution": "node",
     "outDir": "./dist",
     "esModuleInterop": true,
@@ -9,8 +9,9 @@
     "strict": true,
     "skipLibCheck": true,
     "lib": [
-      "es6"
-    ],
+      "es6",
+      "dom"
+    ], // Keep "dom" if needed for browser APIs
     "types": [
       "node",
       "jest"

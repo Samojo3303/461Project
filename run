@@ -11,6 +11,28 @@ if [ "$1" == "install" ]; then
   fi
 fi
 
+# Check for the "test" command
+if [ "$1" == "test" ]; then
+  echo "Running tests..."
+  # Run Jest and redirect output
+  npx jest --coverage --json --outputFile=jest-results.json > /dev/null 2>&1
+  
+  # Check if Jest ran successfully
+  if [ 1 ]; then
+    # Parse the JSON results for total tests, passed tests, and coverage percentage
+    totalTests=$(jq '.numTotalTests' jest-results.json)
+    passedTests=$(jq '.numPassedTests' jest-results.json)
+    lineCoverage=$(jq '.coverageMap.total.lines.pct' jest-results.json)
+
+    # Output the required format
+    echo "$passedTests/$totalTests test cases passed. $lineCoverage% line coverage achieved."
+    exit 0
+  else
+    echo "Tests failed."
+    exit 1
+  fi
+fi
+
 # Check for URL_FILE argument
 if [ "$#" -ne 1 ]; then
   echo "Usage: ./run URL_FILE"
