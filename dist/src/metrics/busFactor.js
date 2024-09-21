@@ -1,57 +1,88 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
+import { GitHubClient } from '../githubClient.js';
+import * as dotenv from 'dotenv';
+dotenv.config();
+const token = process.env.GITHUB_TOKEN;
+if (!token) {
+    throw new Error("GitHub token is not defined in environment variables");
+}
+const client = new GitHubClient(token);
+const query = `
+  query GetRepoDetails($owner: String!, $name: String!) {
+    rateLimit {
+    limit
+    cost
+    remaining
+    resetAt
+    }  
+    repository(owner: $owner, name: $name) {
+      defaultBranchRef {
+        target {
+          ... on Commit {
+            history(first: 50) {
+              edges {
+                node {
+                  author {
+                    user {
+                      login
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.analyzeContributors = analyzeContributors;
-const git = __importStar(require("isomorphic-git"));
-const fs_1 = __importDefault(require("fs"));
-// Analyze contributor activity (bus factor)
-function analyzeContributors(localPath) {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            // Get the commit log
-            const log = yield git.log({ fs: fs_1.default, dir: localPath, depth: 100 });
-            // Extract unique contributor names
-            const contributors = new Set(log.map(entry => entry.commit.author.name));
-            // Calculate the contributor score: If more than 5 contributors, max score is 1
-            return contributors.size > 5 ? 1 : contributors.size / 5;
+  }
+`;
+export async function metricBusFactor(variables) {
+    const stats = {
+        list_commits_authors: []
+    };
+    return client.request(query, variables, stats)
+        .then(response => {
+        if (response.data && response.data.repository) { //IF REPOSITORY DATA IS AVAILABLE
+            if (response.data.repository.defaultBranchRef && response.data.repository.defaultBranchRef.target) { //IF BRANCH DATA IS AVAILABLE
+                if (response.data.repository.defaultBranchRef.target.history) { //IF COMMIT HISTORY IS AVAILABLE
+                    response.data.repository.defaultBranchRef.target.history.edges.forEach(edge => {
+                        if (edge.node.author && edge.node.author.user && edge.node.author.user.login) {
+                            stats.list_commits_authors.push(edge.node.author.user.login); //lists_commits_authors INSERT
+                        }
+                    });
+                }
+                else {
+                    console.log('No commit history available');
+                }
+            }
+            else {
+                console.log('No branch available');
+            }
         }
-        catch (error) {
-            console.error(`Failed to analyze contributors at ${localPath}:`, error);
-            throw error;
+        else {
+            console.error("Repository data is undefined");
         }
+        const rateLimit = response.data.rateLimit;
+        // console.log(`Rate Limit: ${rateLimit.limit}`);
+        // console.log(`Cost: ${rateLimit.cost}`);
+        // console.log(`Remaining: ${rateLimit.remaining}`);
+        // console.log(`Reset At: ${rateLimit.resetAt}`);
+        return calcBusFactor(stats);
+    })
+        .catch(error => {
+        console.error(error);
+        throw error;
     });
+}
+function calcBusFactor(stats) {
+    // BUS FACTOR: 1 if > 5 or more collaborators, 0 if 1 collaborator
+    const uniqueArray = Array.from(new Set(stats.list_commits_authors));
+    //console.log('Authors:', uniqueArray);
+    //console.log('Unique authors:', uniqueArray.length);
+    let mBusFactor = clampAndFit01(uniqueArray.length, 1, 5);
+    return mBusFactor;
+}
+// HELPER FUNCTIONS 
+function clampAndFit01(value, in_min, in_max) {
+    const clampedValue = Math.min(Math.max(value, in_min), in_max);
+    return ((clampedValue - in_min) / (in_max - in_min));
 }

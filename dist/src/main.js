@@ -1,100 +1,205 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const git = __importStar(require("isomorphic-git"));
-const fs_1 = __importDefault(require("fs"));
-const node_1 = __importDefault(require("isomorphic-git/http/node"));
-const path_1 = __importDefault(require("path"));
-const busFactor_1 = require("./metrics/busFactor");
-const licenseCompatability_1 = require("./metrics/licenseCompatability");
-const correctness_1 = require("./metrics/correctness");
-// Delete the existing repository directory if it exists
-function cleanDirectory(localPath) {
-    if (fs_1.default.existsSync(localPath)) {
-        fs_1.default.rmSync(localPath, { recursive: true, force: true }); // Remove the directory
-    }
-}
-// Clone the repository with force checkout
-function cloneRepository(gitUrl, localPath) {
-    return __awaiter(this, void 0, void 0, function* () {
-        cleanDirectory(localPath);
+import { metricResponsiveness } from './metrics/responsiveness.js';
+import { metricRampUpTime } from './metrics/rampUpTime.js';
+import { metricBusFactor } from './metrics/busFactor.js';
+import { analyzeLicense } from './metrics/licenseCompatability.js';
+import { calculateCAD } from './metrics/correctness.js';
+import * as git from 'isomorphic-git';
+import fs from 'fs';
+import http from 'isomorphic-git/http/node/index.js';
+import path from 'path';
+import { exec } from 'child_process';
+// Main function to execute the metrics and repository analysis
+async function analyzeURL(url) {
+    const originalUrl = url;
+    const loc = checkURL(url);
+    if (loc === 'npm') {
+        const packageName = parseNpmLink(url);
         try {
-            yield git.clone({
-                fs: fs_1.default,
-                http: node_1.default,
-                dir: localPath,
-                url: gitUrl,
-                singleBranch: true,
-                depth: 1, // Shallow clone to get the latest commit only
-            });
-            console.log(`Repository cloned to ${localPath}`);
+            url = await getGitHubFromNpm(packageName);
         }
         catch (error) {
-            console.error(`Failed to clone repository ${gitUrl}:`, error);
-            throw error;
+            console.error(error);
+            return null; // Indicate failure
         }
+    }
+    if (loc === 'npm' || loc === 'Run') {
+        const { owner, name } = parseGitHubLink(url);
+        const variables = { owner, name };
+        try {
+            // Measure and run metrics
+            const responsivenessStartTime = Date.now();
+            const responsiveness = await metricResponsiveness(variables);
+            const responsivenessLatency = ((Date.now() - responsivenessStartTime) / 1000).toFixed(3);
+            const rampUpStartTime = Date.now();
+            const rampUpTime = await metricRampUpTime(variables);
+            const rampUpLatency = ((Date.now() - rampUpStartTime) / 1000).toFixed(3);
+            const busFactorStartTime = Date.now();
+            const busFactor = await metricBusFactor(variables);
+            const busFactorLatency = ((Date.now() - busFactorStartTime) / 1000).toFixed(3);
+            // Analyze repository
+            const repoStartTime = Date.now();
+            const results = await analyzeRepo(url);
+            const repoLatency = ((Date.now() - repoStartTime) / 1000).toFixed(3);
+            const { licenseScore, cadScore } = results;
+            // Define weights for metrics
+            const weights = { rampUp: 0.2, correctness: 0.2, busFactor: 0.2, responsiveness: 0.2, license: 0.2 };
+            // Calculate overall NetScore
+            const netScore = (rampUpTime * weights.rampUp) +
+                (cadScore * weights.correctness) +
+                (busFactor * weights.busFactor) +
+                (responsiveness * weights.responsiveness) +
+                (licenseScore * weights.license);
+            const netScoreLatency = ((Date.now() - responsivenessStartTime) / 1000).toFixed(3);
+            // Output as NDJSON
+            const output = {
+                URL: originalUrl,
+                NetScore: netScore.toFixed(3),
+                NetScore_Latency: netScoreLatency,
+                RampUp: rampUpTime.toFixed(3),
+                RampUp_Latency: rampUpLatency,
+                Correctness: cadScore.toFixed(3),
+                Correctness_Latency: repoLatency,
+                BusFactor: busFactor.toFixed(3),
+                BusFactor_Latency: busFactorLatency,
+                ResponsiveMaintainer: responsiveness.toFixed(3),
+                ResponsiveMaintainer_Latency: responsivenessLatency,
+                License: licenseScore.toFixed(3),
+                License_Latency: repoLatency
+            };
+            return output;
+        }
+        catch (error) {
+            console.error('Error during analysis:', error);
+            return null; // Indicate failure
+        }
+    }
+    else {
+        console.log('Invalid URL');
+        return null; // Indicate failure
+    }
+}
+// Helper functions
+function parseGitHubLink(link) {
+    link = link.replace(/\.git$/, '');
+    const match = link.match(/.*github\.com\/([^\/]+)\/([^\/]+)/);
+    if (!match) {
+        throw new Error('Invalid GitHub link');
+    }
+    return { owner: match[1], name: match[2] };
+}
+function parseNpmLink(link) {
+    const match = link.match(/npmjs\.com\/package\/([^\/]+)/);
+    if (!match) {
+        throw new Error('Invalid npm link');
+    }
+    return match[1];
+}
+async function getGitHubFromNpm(packageName) {
+    return new Promise((resolve, reject) => {
+        exec(`npm view ${packageName} repository.url`, (error, stdout, stderr) => {
+            if (error) {
+                reject(`Error: ${error.message}`);
+                return;
+            }
+            if (stderr) {
+                reject(`Error: ${stderr}`);
+                return;
+            }
+            let repoUrl = stdout.trim();
+            repoUrl = repoUrl.replace(/^git\+/, '');
+            if (repoUrl) {
+                resolve(repoUrl);
+            }
+            else {
+                reject(`No GitHub repository link found for package: ${packageName}`);
+            }
+        });
     });
 }
-// Main function to analyze the repository
-function analyzeRepo(gitUrl) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const localPath = path_1.default.join('./temp-repo');
-        // Clone the repository
-        yield cloneRepository(gitUrl, localPath);
-        // Analyze contributors
-        const contributorScore = yield (0, busFactor_1.analyzeContributors)(localPath);
-        console.log(`Contributor Score: ${contributorScore}`);
-        // Analyze license
-        const licenseScore = yield (0, licenseCompatability_1.analyzeLicense)(localPath);
-        console.log(`License Score: ${licenseScore}`);
-        // Calculate Commit Activity Density (CAD)
-        const cadScore = yield (0, correctness_1.calculateCAD)(localPath);
-        console.log(`Commit Activity Density (CAD) Score: ${cadScore.toFixed(2)}`);
-        // Clean up the repository after analysis
-        cleanDirectory(localPath);
-        // Weights for each factor in the correctness score
-        const weights = { contributor: 0.3, license: 0.3, cad: 0.4 };
-        // Calculate overall correctness score
-        const correctnessScore = (contributorScore * weights.contributor) +
-            (licenseScore * weights.license) +
-            (cadScore * weights.cad);
-        console.log(`Overall Correctness Score: ${correctnessScore.toFixed(2)} (0 = low, 1 = high)`);
-    });
+function checkURL(link) {
+    try {
+        const url = new URL(link);
+        const hostname = url.hostname.toLowerCase();
+        if (hostname.includes('github.com')) {
+            return 'Run';
+        }
+        else if (hostname.includes('npmjs.com')) {
+            return 'npm';
+        }
+        else {
+            return 'Invalid URL';
+        }
+    }
+    catch {
+        return 'Invalid URL';
+    }
 }
-// Example usage
-const gitUrl = 'https://github.com/lodash/lodash'; // Replace with the actual URL
-analyzeRepo(gitUrl).catch(err => console.error(err));
+// Repository analysis functions
+async function analyzeRepo(gitUrl) {
+    const localPath = path.join('./temp-repo');
+    await cloneRepository(gitUrl, localPath);
+    const licenseScore = await analyzeLicense(localPath);
+    const cadScore = await calculateCAD(localPath);
+    cleanDirectory(localPath);
+    return { licenseScore, cadScore };
+}
+function cleanDirectory(localPath) {
+    if (fs.existsSync(localPath)) {
+        fs.rmSync(localPath, { recursive: true, force: true });
+    }
+}
+async function cloneRepository(gitUrl, localPath) {
+    cleanDirectory(localPath);
+    // Replace ssh protocol with https
+    if (gitUrl.startsWith('ssh://')) {
+        gitUrl = gitUrl.replace(/^ssh:\/\/git@github.com\//, 'https://github.com/');
+    }
+    // Replace git protocol with https
+    if (gitUrl.startsWith('git://')) {
+        gitUrl = gitUrl.replace(/^git:\/\//, 'https://');
+    }
+    try {
+        await git.clone({
+            fs,
+            http,
+            dir: localPath,
+            url: gitUrl,
+            singleBranch: true,
+            depth: 1,
+        });
+    }
+    catch (error) {
+        if (error instanceof Error) {
+            console.error(`Failed to clone repository ${gitUrl}: ${error.message}`);
+        }
+        else {
+            console.error(`Failed to clone repository ${gitUrl}:`, error);
+        }
+        throw error;
+    }
+}
+// Process the URL_FILE and analyze each URL
+async function processUrlFile(filePath) {
+    try {
+        const urls = fs.readFileSync(filePath, 'utf8').split('\n').filter(Boolean);
+        for (const url of urls) {
+            const result = await analyzeURL(url);
+            if (result) {
+                console.log(JSON.stringify(result));
+            }
+        }
+        process.exit(0);
+    }
+    catch (error) {
+        console.error('Error processing URL file:', error);
+        process.exit(1);
+    }
+}
+// Check for command-line arguments
+const args = process.argv.slice(2);
+if (args.length !== 1) {
+    console.error('Usage: ./run URL_FILE');
+    process.exit(1);
+}
+const urlFilePath = args[0];
+processUrlFile(urlFilePath);

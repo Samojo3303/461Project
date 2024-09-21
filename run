@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Check for the "install" command
+if [ "$1" == "install" ]; then
+  echo "Installing dependencies..."
+  npm install --legacy-peer-deps
+  if [ $? -eq 0 ]; then
+    exit 0
+  else
+    exit 1
+  fi
+fi
+
+# Check for URL_FILE argument
+if [ "$#" -ne 1 ]; then
+  echo "Usage: ./run URL_FILE"
+  exit 1
+fi
+
+# Run the Node.js application with the provided URL_FILE
+node dist/src/main.js "$1"
