@@ -9,38 +9,51 @@ import http from 'isomorphic-git/http/node/index.js';
 import path from 'path';
 import axios from 'axios';
 import { logMessage } from '../log.js';
+import { log } from 'console';
 
 // Main function to execute the metrics and repository analysis
+
+// Check URL for GitHub or npm
 async function analyzeURL(url: string) {
   const originalUrl = url;
   const loc = checkURL(url);
+  logMessage(2, `URL Location: ${loc}`);
+
+  // If npm get github information
   if (loc === 'npm') {
     const packageName = parseNpmLink(url);
+    logMessage(2, `parseNpmLink return: ${packageName}`);
     try {
       url = await getGitHubFromNpmAxios(packageName);
+      logMessage(2, `getGitHubFromNpmAxios return: ${url}`);
     } catch (error) {
       console.error(error);
       return null; // Indicate failure
     }
   }
 
+  // Run analysis on GitHub repository
   if (loc === 'npm' || loc === 'Run') {
     const { owner, name } = parseGitHubLink(url);
     const variables = { owner, name };
+    logMessage(1, `Analyzing repository: ${owner}/${name}`);
 
     try {
       // Measure and run metrics
       const responsivenessStartTime = Date.now();
       const responsiveness = await metricResponsiveness(variables);
       const responsivenessLatency = ((Date.now() - responsivenessStartTime) / 1000).toFixed(3);
+      logMessage(1, `Responsiveness: ${responsiveness} (Latency: ${responsivenessLatency}s)`);
 
       const rampUpStartTime = Date.now();
       const rampUpTime = await metricRampUpTime(variables);
       const rampUpLatency = ((Date.now() - rampUpStartTime) / 1000).toFixed(3);
+      logMessage(1, `RampUpTime: ${rampUpTime} (Latency: ${rampUpLatency}s)`);
 
       const busFactorStartTime = Date.now();
       const busFactor = await metricBusFactor(variables);
       const busFactorLatency = ((Date.now() - busFactorStartTime) / 1000).toFixed(3);
+      logMessage(1, `BusFactor: ${busFactor} (Latency: ${busFactorLatency}s)`);
 
       // Analyze repository
       const localPath = path.join('./temp-repo');
@@ -50,10 +63,12 @@ async function analyzeURL(url: string) {
       const licenseScoreStartTime = Date.now();
       const licenseScore = await analyzeLicense(localPath);
       const licenseScoreLatency = ((Date.now() - licenseScoreStartTime) / 1000).toFixed(3);
+      logMessage(1, `License: ${licenseScore} (Latency: ${licenseScoreLatency}s)`);
 
       const correctnessScoreStartTime = Date.now();
       const cadScore = await calculateCAD(localPath);
       const correctnessScoreLatency = ((Date.now() - correctnessScoreStartTime) / 1000).toFixed(3);
+      logMessage(1, `Correctness: ${cadScore} (Latency: ${correctnessScoreLatency}s)`);
 
       cleanDirectory(localPath);
 
@@ -77,10 +92,15 @@ async function analyzeURL(url: string) {
       }
       const weightSum = weights.busFactor + weights.correctness + weights.rampUp + weights.responsiveness + weights.license;
       weights.rampUp = weights.rampUp / weightSum;
+      logMessage(1, `RampUpTime Weight: ${JSON.stringify(weights.rampUp)}`);
       weights.correctness = weights.correctness / weightSum;
+      logMessage(1, `Correctness Weight: ${JSON.stringify(weights.correctness)}`);
       weights.busFactor = weights.busFactor / weightSum;
+      logMessage(1, `BusFactor Weight: ${JSON.stringify(weights.busFactor)}`);
       weights.responsiveness = weights.responsiveness / weightSum;
+      logMessage(1, `Responsiveness Weight: ${JSON.stringify(weights.responsiveness)}`);
       weights.license = weights.license / weightSum;
+      logMessage(1, `License Weight: ${JSON.stringify(weights.license)}`);
 
       // Calculate overall NetScore
       const netScore =
@@ -90,6 +110,7 @@ async function analyzeURL(url: string) {
         (responsiveness * weights.responsiveness) +
         (licenseScore * weights.license);
       const netScoreLatency = ((Date.now() - responsivenessStartTime) / 1000).toFixed(3);
+      logMessage(1, `NetScore: ${netScore} (Latency: ${netScoreLatency}s)`);
 
       // Output as NDJSON
       const output = {
@@ -155,6 +176,7 @@ async function getGitHubFromNpmAxios(packageName: string): Promise<string> {
 
 function checkURL(link: string): 'Run' | 'npm' | 'Invalid URL' {
   try {
+    logMessage(2, `Input URL: ${link}`);
     const url = new URL(link);
     const hostname = url.hostname.toLowerCase();
 
