@@ -41,40 +41,39 @@ async function analyzeURL(url: string) {
     try {
       // Measure and run metrics
       const responsivenessStartTime = Date.now();
-      const responsiveness = await metricResponsiveness(variables);
-      const responsivenessLatency = ((Date.now() - responsivenessStartTime) / 1000).toFixed(3);
+      const responsiveness: number = parseFloat((await metricResponsiveness(variables)).toFixed(3));
+      const responsivenessLatency: number = parseFloat(((Date.now() - responsivenessStartTime) / 1000).toFixed(3));
       logMessage(1, `Responsiveness: ${responsiveness} (Latency: ${responsivenessLatency}s)`);
 
+
       const rampUpStartTime = Date.now();
-      const rampUpTime = await metricRampUpTime(variables);
-      const rampUpLatency = ((Date.now() - rampUpStartTime) / 1000).toFixed(3);
+      const rampUpTime: number = parseFloat((await metricRampUpTime(variables)).toFixed(3));
+      const rampUpLatency: number = parseFloat(((Date.now() - rampUpStartTime) / 1000).toFixed(3));
       logMessage(1, `RampUpTime: ${rampUpTime} (Latency: ${rampUpLatency}s)`);
 
       const busFactorStartTime = Date.now();
-      const busFactor = await metricBusFactor(variables);
-      const busFactorLatency = ((Date.now() - busFactorStartTime) / 1000).toFixed(3);
+      const busFactor: number = parseFloat((await metricBusFactor(variables)).toFixed(3));
+      const busFactorLatency: number = parseFloat(((Date.now() - busFactorStartTime) / 1000).toFixed(3));
       logMessage(1, `BusFactor: ${busFactor} (Latency: ${busFactorLatency}s)`);
+
 
       // Analyze repository
       const localPath = path.join('./temp-repo');
-
       await cloneRepository(url, localPath);
-
       const licenseScoreStartTime = Date.now();
-      const licenseScore = await analyzeLicense(localPath);
-      const licenseScoreLatency = ((Date.now() - licenseScoreStartTime) / 1000).toFixed(3);
+      const licenseScore: number = parseFloat((await analyzeLicense(localPath)).toFixed(3));
+      const licenseScoreLatency: number = parseFloat(((Date.now() - licenseScoreStartTime) / 1000).toFixed(3));
       logMessage(1, `License: ${licenseScore} (Latency: ${licenseScoreLatency}s)`);
 
       const correctnessScoreStartTime = Date.now();
-      const cadScore = await calculateCAD(localPath);
-      const correctnessScoreLatency = ((Date.now() - correctnessScoreStartTime) / 1000).toFixed(3);
+      const cadScore: number = parseFloat((await calculateCAD(localPath)).toFixed(3));
+      const correctnessScoreLatency: number = parseFloat(((Date.now() - correctnessScoreStartTime) / 1000).toFixed(3));
       logMessage(1, `Correctness: ${cadScore} (Latency: ${correctnessScoreLatency}s)`);
 
       cleanDirectory(localPath);
 
       // Define weights for metrics
       let weights = { rampUp: 0.15, correctness: 0.2, busFactor: 0.3, responsiveness: 0.15, license: 0.2 };
-
       if (rampUpTime === -1) {
         weights.rampUp = 0;
       }
@@ -103,29 +102,32 @@ async function analyzeURL(url: string) {
       logMessage(1, `License Weight: ${JSON.stringify(weights.license)}`);
 
       // Calculate overall NetScore
-      const netScore =
-        (rampUpTime * weights.rampUp) +
-        (cadScore * weights.correctness) +
-        (busFactor * weights.busFactor) +
-        (responsiveness * weights.responsiveness) +
-        (licenseScore * weights.license);
-      const netScoreLatency = ((Date.now() - responsivenessStartTime) / 1000).toFixed(3);
+      const netScore: number = parseFloat(
+        (
+          (rampUpTime * weights.rampUp) +
+          (cadScore * weights.correctness) +
+          (busFactor * weights.busFactor) +
+          (responsiveness * weights.responsiveness) +
+          (licenseScore * weights.license)
+        ).toFixed(3)
+      );
+      const netScoreLatency: number = parseFloat(((Date.now() - responsivenessStartTime) / 1000).toFixed(3));
       logMessage(1, `NetScore: ${netScore} (Latency: ${netScoreLatency}s)`);
 
       // Output as NDJSON
       const output = {
         URL: originalUrl,
-        NetScore: netScore.toFixed(3),
+        NetScore: netScore,
         NetScore_Latency: netScoreLatency,
-        RampUp: rampUpTime.toFixed(3),
+        RampUp: rampUpTime,
         RampUp_Latency: rampUpLatency,
-        Correctness: cadScore.toFixed(3),
+        Correctness: cadScore,
         Correctness_Latency: correctnessScoreLatency,
-        BusFactor: busFactor.toFixed(3),
+        BusFactor: busFactor,
         BusFactor_Latency: busFactorLatency,
-        ResponsiveMaintainer: responsiveness.toFixed(3),
+        ResponsiveMaintainer: responsiveness,
         ResponsiveMaintainer_Latency: responsivenessLatency,
-        License: licenseScore.toFixed(3),
+        License: licenseScore,
         License_Latency: licenseScoreLatency
       };
 
