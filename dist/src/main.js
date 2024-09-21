@@ -7,15 +7,17 @@ import * as git from 'isomorphic-git';
 import fs from 'fs';
 import http from 'isomorphic-git/http/node/index.js';
 import path from 'path';
-import { exec } from 'child_process';
+import axios from 'axios';
+import { logMessage } from '../log.js';
 // Main function to execute the metrics and repository analysis
 async function analyzeURL(url) {
     const originalUrl = url;
     const loc = checkURL(url);
+    logMessage(1, 'Hello');
     if (loc === 'npm') {
         const packageName = parseNpmLink(url);
         try {
-            url = await getGitHubFromNpm(packageName);
+            url = await getGitHubFromNpmAxios(packageName);
         }
         catch (error) {
             console.error(error);
@@ -37,12 +39,38 @@ async function analyzeURL(url) {
             const busFactor = await metricBusFactor(variables);
             const busFactorLatency = ((Date.now() - busFactorStartTime) / 1000).toFixed(3);
             // Analyze repository
-            const repoStartTime = Date.now();
-            const results = await analyzeRepo(url);
-            const repoLatency = ((Date.now() - repoStartTime) / 1000).toFixed(3);
-            const { licenseScore, cadScore } = results;
+            const localPath = path.join('./temp-repo');
+            await cloneRepository(url, localPath);
+            const licenseScoreStartTime = Date.now();
+            const licenseScore = await analyzeLicense(localPath);
+            const licenseScoreLatency = ((Date.now() - licenseScoreStartTime) / 1000).toFixed(3);
+            const correctnessScoreStartTime = Date.now();
+            const cadScore = await calculateCAD(localPath);
+            const correctnessScoreLatency = ((Date.now() - correctnessScoreStartTime) / 1000).toFixed(3);
+            cleanDirectory(localPath);
             // Define weights for metrics
-            const weights = { rampUp: 0.2, correctness: 0.2, busFactor: 0.2, responsiveness: 0.2, license: 0.2 };
+            let weights = { rampUp: 0.15, correctness: 0.2, busFactor: 0.3, responsiveness: 0.15, license: 0.2 };
+            if (rampUpTime === -1) {
+                weights.rampUp = 0;
+            }
+            if (cadScore === -1) {
+                weights.correctness = 0;
+            }
+            if (busFactor === -1) {
+                weights.busFactor = 0;
+            }
+            if (responsiveness === -1) {
+                weights.responsiveness = 0;
+            }
+            if (licenseScore === -1) {
+                weights.license = 0;
+            }
+            const weightSum = weights.busFactor + weights.correctness + weights.rampUp + weights.responsiveness + weights.license;
+            weights.rampUp = weights.rampUp / weightSum;
+            weights.correctness = weights.correctness / weightSum;
+            weights.busFactor = weights.busFactor / weightSum;
+            weights.responsiveness = weights.responsiveness / weightSum;
+            weights.license = weights.license / weightSum;
             // Calculate overall NetScore
             const netScore = (rampUpTime * weights.rampUp) +
                 (cadScore * weights.correctness) +
@@ -58,13 +86,13 @@ async function analyzeURL(url) {
                 RampUp: rampUpTime.toFixed(3),
                 RampUp_Latency: rampUpLatency,
                 Correctness: cadScore.toFixed(3),
-                Correctness_Latency: repoLatency,
+                Correctness_Latency: correctnessScoreLatency,
                 BusFactor: busFactor.toFixed(3),
                 BusFactor_Latency: busFactorLatency,
                 ResponsiveMaintainer: responsiveness.toFixed(3),
                 ResponsiveMaintainer_Latency: responsivenessLatency,
                 License: licenseScore.toFixed(3),
-                License_Latency: repoLatency
+                License_Latency: licenseScoreLatency
             };
             return output;
         }
@@ -94,26 +122,20 @@ function parseNpmLink(link) {
     }
     return match[1];
 }
-async function getGitHubFromNpm(packageName) {
-    return new Promise((resolve, reject) => {
-        exec(`npm view ${packageName} repository.url`, (error, stdout, stderr) => {
-            if (error) {
-                reject(`Error: ${error.message}`);
-                return;
-            }
-            if (stderr) {
-                reject(`Error: ${stderr}`);
-                return;
-            }
-            let repoUrl = stdout.trim();
-            repoUrl = repoUrl.replace(/^git\+/, '');
-            if (repoUrl) {
-                resolve(repoUrl);
-            }
-            else {
-                reject(`No GitHub repository link found for package: ${packageName}`);
-            }
-        });
+async function getGitHubFromNpmAxios(packageName) {
+    return axios.get(`https://registry.npmjs.com/${packageName}`)
+        .then(response => {
+        let repoUrl = response.data.repository.url;
+        repoUrl = repoUrl.replace(/^git\+/, "");
+        if (repoUrl) {
+            return repoUrl;
+        }
+        else {
+            return `No GitHub repository link found for package: ${packageName}`;
+        }
+    })
+        .catch(error => {
+        return `Error: ${error.message}`;
     });
 }
 function checkURL(link) {
@@ -133,15 +155,6 @@ function checkURL(link) {
     catch {
         return 'Invalid URL';
     }
-}
-// Repository analysis functions
-async function analyzeRepo(gitUrl) {
-    const localPath = path.join('./temp-repo');
-    await cloneRepository(gitUrl, localPath);
-    const licenseScore = await analyzeLicense(localPath);
-    const cadScore = await calculateCAD(localPath);
-    cleanDirectory(localPath);
-    return { licenseScore, cadScore };
 }
 function cleanDirectory(localPath) {
     if (fs.existsSync(localPath)) {
@@ -181,6 +194,10 @@ async function cloneRepository(gitUrl, localPath) {
 // Process the URL_FILE and analyze each URL
 async function processUrlFile(filePath) {
     try {
+        if (process.env.GITHUB_TOKEN === undefined) {
+            console.error('GitHub token is not defined in environment variables');
+            process.exit(1);
+        }
         const urls = fs.readFileSync(filePath, 'utf8').split('\n').filter(Boolean);
         for (const url of urls) {
             const result = await analyzeURL(url);

@@ -87,13 +87,16 @@ export async function metricResponsiveness(variables: { owner: string, name: str
             });
           } else {
             console.log('No commit history available');
+            return -1;
           }
         } else {
           console.log('No branch available');
+          return -1;
         }
       }
       else {
         console.error("Repository data is undefined");
+        return -1;
       }
       const rateLimit = response.data.rateLimit;
       // console.log(`Rate Limit: ${rateLimit.limit}`);
@@ -103,8 +106,9 @@ export async function metricResponsiveness(variables: { owner: string, name: str
       return calcResponsiveness(stats);
     })
     .catch(error => {
-      console.error(error);
-      throw error;
+      return -1;
+      // console.error(error);
+      // throw error;
     });
 }
 

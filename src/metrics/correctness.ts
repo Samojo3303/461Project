@@ -27,7 +27,8 @@ export async function calculateCAD(localPath: string): Promise<number> {
 
     return normalizedCAD;
   } catch (error) {
-    console.error(`Failed to calculate CAD:`, error);
-    throw error;
+    return -1;
+    //console.error(`Failed to calculate CAD:`, error);
+    //throw error;
   }
 }

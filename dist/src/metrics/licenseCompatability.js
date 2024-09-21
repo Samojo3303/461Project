@@ -45,7 +45,8 @@ export async function analyzeLicense(localPath) {
         }
     }
     catch (error) {
-        console.error(`Failed to analyze license at ${localPath}:`, error);
-        throw error;
+        return -1;
+        //console.error(`Failed to analyze license at ${localPath}:`, error);
+        //throw error;
     }
 }

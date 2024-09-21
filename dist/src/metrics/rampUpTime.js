@@ -97,10 +97,12 @@ export async function metricRampUpTime(variables) {
             }
             else {
                 console.log('No files available');
+                return -1;
             }
         }
         else {
             console.error("Repository data is undefined");
+            return -1;
         }
         //console.log(`Files: ${stats.amt_files}`);
         const rateLimit = response.data.rateLimit;
@@ -111,11 +113,12 @@ export async function metricRampUpTime(variables) {
         return calcRampUpTime(stats);
     })
         .catch(error => {
-        console.error('Error fetching repository data:', error);
-        if (error.response) {
-            console.error('Response data:', error.response.data);
-        }
-        throw error;
+        return -1;
+        // console.error('Error fetching repository data:', error);
+        // if (error.response) {
+        //   console.error('Response data:', error.response.data);
+        // }
+        // throw error;
     });
 }
 function calcRampUpTime(stats) {
