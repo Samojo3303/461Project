@@ -1,3 +1,4 @@
+import { log } from 'console';
 import { logMessage } from '../../log.js';
 import { GitHubClient } from '../githubClient.js';
 import * as dotenv from 'dotenv';
@@ -135,12 +136,12 @@ export async function metricRampUpTime(variables: { owner: string, name: string 
             }
           });
         } else {
-          console.log('No files available');
+          logMessage(2, 'RampUpTime: No files available');
           return -1;
         }
       }
       else {
-        console.error("Repository data is undefined");
+        logMessage(2, 'RampUpTime: No repository data available');
         return -1;
       }
 

@@ -1,3 +1,4 @@
+import { log } from 'console';
 import { logMessage } from '../../log.js';
 import { GitHubClient } from '../githubClient.js';
 import * as dotenv from 'dotenv';
@@ -87,16 +88,16 @@ export async function metricResponsiveness(variables: { owner: string, name: str
               stats.list_commits_dates.push(new Date(edge.node.committedDate)); //lists_commits_dates INSERT
             });
           } else {
-            console.log('No commit history available');
+            logMessage(2, 'Responsiveness: No commit history available');
             return -1;
           }
         } else {
-          console.log('No branch available');
+          logMessage(2, 'Responsiveness: No branch available');
           return -1;
         }
       }
       else {
-        console.error("Repository data is undefined");
+        logMessage(2, 'Responsiveness: No repository data available');
         return -1;
       }
       const rateLimit = response.data.rateLimit;
