@@ -9,6 +9,7 @@ import fs from 'fs';
 import http from 'isomorphic-git/http/node/index.js';
 import path from 'path';
 import axios from 'axios';
+import { sourceMapsEnabled } from 'process';
 
 // Main function to execute the metrics and repository analysis
 async function analyzeURL(url: string) {
@@ -44,13 +45,44 @@ async function analyzeURL(url: string) {
       const busFactorLatency = ((Date.now() - busFactorStartTime) / 1000).toFixed(3);
 
       // Analyze repository
-      const repoStartTime = Date.now();
-      const results = await analyzeRepo(url);
-      const repoLatency = ((Date.now() - repoStartTime) / 1000).toFixed(3);
-      const { licenseScore, cadScore } = results;
+      const localPath = path.join('./temp-repo');
+
+      await cloneRepository(url, localPath);
+
+      const licenseScoreStartTime = Date.now();
+      const licenseScore = await analyzeLicense(localPath);
+      const licenseScoreLatency = ((Date.now() - licenseScoreStartTime) / 1000).toFixed(3);
+
+      const correctnessScoreStartTime = Date.now();
+      const cadScore = await calculateCAD(localPath);
+      const correctnessScoreLatency = ((Date.now() - correctnessScoreStartTime) / 1000).toFixed(3);
+
+      cleanDirectory(localPath);
 
       // Define weights for metrics
-      const weights = { rampUp: 0.2, correctness: 0.2, busFactor: 0.2, responsiveness: 0.2, license: 0.2 };
+      let weights = { rampUp: 0.15, correctness: 0.2, busFactor: 0.3, responsiveness: 0.15, license: 0.2 };
+
+      if (rampUpTime === -1) {
+        weights.rampUp = 0;
+      }
+      if (cadScore === -1) {
+        weights.correctness = 0;
+      }
+      if (busFactor === -1) {
+        weights.busFactor = 0;
+      }
+      if (responsiveness === -1) {
+        weights.responsiveness = 0;
+      }
+      if (licenseScore === -1) {
+        weights.license = 0;
+      }
+      const weightSum = weights.busFactor + weights.correctness + weights.rampUp + weights.responsiveness + weights.license;
+      weights.rampUp = weights.rampUp / weightSum;
+      weights.correctness = weights.correctness / weightSum;
+      weights.busFactor = weights.busFactor / weightSum;
+      weights.responsiveness = weights.responsiveness / weightSum;
+      weights.license = weights.license / weightSum;
 
       // Calculate overall NetScore
       const netScore =
@@ -69,13 +101,13 @@ async function analyzeURL(url: string) {
         RampUp: rampUpTime.toFixed(3),
         RampUp_Latency: rampUpLatency,
         Correctness: cadScore.toFixed(3),
-        Correctness_Latency: repoLatency,
+        Correctness_Latency: correctnessScoreLatency,
         BusFactor: busFactor.toFixed(3),
         BusFactor_Latency: busFactorLatency,
         ResponsiveMaintainer: responsiveness.toFixed(3),
         ResponsiveMaintainer_Latency: responsivenessLatency,
         License: licenseScore.toFixed(3),
-        License_Latency: repoLatency
+        License_Latency: licenseScoreLatency
       };
 
       return output;
@@ -140,20 +172,6 @@ function checkURL(link: string): 'Run' | 'npm' | 'Invalid URL' {
   }
 }
 
-// Repository analysis functions
-async function analyzeRepo(gitUrl: string) {
-  const localPath = path.join('./temp-repo');
-
-  await cloneRepository(gitUrl, localPath);
-
-  const licenseScore = await analyzeLicense(localPath);
-  const cadScore = await calculateCAD(localPath);
-
-  cleanDirectory(localPath);
-
-  return { licenseScore, cadScore };
-}
-
 function cleanDirectory(localPath: string) {
   if (fs.existsSync(localPath)) {
     fs.rmSync(localPath, { recursive: true, force: true });
@@ -195,6 +213,10 @@ async function cloneRepository(gitUrl: string, localPath: string) {
 // Process the URL_FILE and analyze each URL
 async function processUrlFile(filePath: string) {
   try {
+    if (process.env.GITHUB_TOKEN === undefined) {
+      console.error('GitHub token is not defined in environment variables');
+      process.exit(1);
+    }
     const urls = fs.readFileSync(filePath, 'utf8').split('\n').filter(Boolean);
 
     for (const url of urls) {

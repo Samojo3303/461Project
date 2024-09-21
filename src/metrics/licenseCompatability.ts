@@ -35,7 +35,7 @@ export async function analyzeLicense(localPath: string): Promise<number> {
     // Check if LICENSE file exists
     if (fs.existsSync(licenseFilePath)) {
       licenseText = fs.readFileSync(licenseFilePath, 'utf8');
-    } 
+    }
     // If not, check for license section in README.md
     else if (fs.existsSync(readmeFilePath)) {
       const readmeContent = fs.readFileSync(readmeFilePath, 'utf8');
@@ -49,7 +49,8 @@ export async function analyzeLicense(localPath: string): Promise<number> {
       return 0; // License is incompatible or not found
     }
   } catch (error) {
-    console.error(`Failed to analyze license at ${localPath}:`, error);
-    throw error;
+    return -1;
+    //console.error(`Failed to analyze license at ${localPath}:`, error);
+    //throw error;
   }
 }
