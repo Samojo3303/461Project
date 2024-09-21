@@ -1,3 +1,4 @@
+import { log } from 'console';
 import { logMessage } from '../../log.js';
 import { GitHubClient } from '../githubClient.js';
 import * as dotenv from 'dotenv';
@@ -87,16 +88,16 @@ export async function metricResponsiveness(variables: { owner: string, name: str
               stats.list_commits_dates.push(new Date(edge.node.committedDate)); //lists_commits_dates INSERT
             });
           } else {
-            console.log('No commit history available');
+            logMessage(2, 'Responsiveness: No commit history available');
             return -1;
           }
         } else {
-          console.log('No branch available');
+          logMessage(2, 'Responsiveness: No branch available');
           return -1;
         }
       }
       else {
-        console.error("Repository data is undefined");
+        logMessage(2, 'Responsiveness: No repository data available');
         return -1;
       }
       const rateLimit = response.data.rateLimit;
@@ -135,8 +136,8 @@ function calcResponsiveness(stats: any): number {
   logMessage(1, `Responsiveness - Avg commit period: ${Math.round(frequency)} days`);
 
   frequency = 1 - clampAndFit01(frequency, 7 * 2, 7 * 15); //fit average days between commits 0-1 from 2-15 weeks
-  logMessage(1, `Responsiveness - Recency scaled: ${recency}`);
-  logMessage(1, `Responsiveness - Frequency scaled: ${frequency}`);
+  logMessage(2, `Responsiveness - Recency scaled: ${recency}`);
+  logMessage(2, `Responsiveness - Frequency scaled: ${frequency}`);
   let mResponsiveness: number = (0.4 * recency) + (0.6 * frequency);
 
   return mResponsiveness;

@@ -14,7 +14,7 @@ import { log } from 'console';
 // Main function to execute the metrics and repository analysis
 
 // Check URL for GitHub or npm
-async function analyzeURL(url: string) {
+export async function analyzeURL(url: string) {
   const originalUrl = url;
   const loc = checkURL(url);
   logMessage(2, `URL Location: ${loc}`);
