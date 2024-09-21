@@ -8,7 +8,7 @@ import * as git from 'isomorphic-git';
 import fs from 'fs';
 import http from 'isomorphic-git/http/node/index.js';
 import path from 'path';
-import { exec } from 'child_process';
+import axios from 'axios';
 
 // Main function to execute the metrics and repository analysis
 async function analyzeURL(url: string) {
@@ -18,7 +18,7 @@ async function analyzeURL(url: string) {
   if (loc === 'npm') {
     const packageName = parseNpmLink(url);
     try {
-      url = await getGitHubFromNpm(packageName);
+      url = await getGitHubFromNpmAxios(packageName);
     } catch (error) {
       console.error(error);
       return null; // Indicate failure
@@ -107,28 +107,20 @@ function parseNpmLink(link: string) {
   return match[1];
 }
 
-async function getGitHubFromNpm(packageName: string) {
-  return new Promise<string>((resolve, reject) => {
-    exec(`npm view ${packageName} repository.url`, (error, stdout, stderr) => {
-      if (error) {
-        reject(`Error: ${error.message}`);
-        return;
-      }
-      if (stderr) {
-        reject(`Error: ${stderr}`);
-        return;
-      }
-
-      let repoUrl = stdout.trim();
-      repoUrl = repoUrl.replace(/^git\+/, '');
-
+async function getGitHubFromNpmAxios(packageName: string): Promise<string> {
+  return axios.get(`https://registry.npmjs.com/${packageName}`)
+    .then(response => {
+      let repoUrl = response.data.repository.url;
+      repoUrl = repoUrl.replace(/^git\+/, "");
       if (repoUrl) {
-        resolve(repoUrl);
+        return repoUrl;
       } else {
-        reject(`No GitHub repository link found for package: ${packageName}`);
+        return `No GitHub repository link found for package: ${packageName}`;
       }
+    })
+    .catch(error => {
+      return `Error: ${error.message}`;
     });
-  });
 }
 
 function checkURL(link: string): 'Run' | 'npm' | 'Invalid URL' {
