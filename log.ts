@@ -7,7 +7,7 @@ import path from "path";
 export function logMessage(level: number, message: string): void {
   const logLevel = parseInt(process.env.LOG_LEVEL as string, 10);
   const logFile = process.env.LOG_FILE;
-  console.log('HERE');
+
   if (logLevel >= level && logFile) {
     const logPath = path.resolve(logFile);
     const logEntry = `${new Date().toISOString()} [${level}] ${message}\n`;

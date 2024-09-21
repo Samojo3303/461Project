@@ -136,8 +136,8 @@ function calcResponsiveness(stats: any): number {
   logMessage(1, `Responsiveness - Avg commit period: ${Math.round(frequency)} days`);
 
   frequency = 1 - clampAndFit01(frequency, 7 * 2, 7 * 15); //fit average days between commits 0-1 from 2-15 weeks
-  logMessage(1, `Responsiveness - Recency scaled: ${recency}`);
-  logMessage(1, `Responsiveness - Frequency scaled: ${frequency}`);
+  logMessage(2, `Responsiveness - Recency scaled: ${recency}`);
+  logMessage(2, `Responsiveness - Frequency scaled: ${frequency}`);
   let mResponsiveness: number = (0.4 * recency) + (0.6 * frequency);
 
   return mResponsiveness;

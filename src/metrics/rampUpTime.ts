@@ -173,8 +173,8 @@ function calcRampUpTime(stats: any): number {
   logMessage(1, `RampUpTime - Average file size: ${Math.round(avg_file_size / 1000)}KB`);
 
   avg_file_size = 1 - clampAndFit01(avg_file_size, 10000, 1000000); //fit file size 0-1 from 10KB-1000KB
-  logMessage(1, `RampUpTime - Files scaled (0-1): ${files}`);
-  logMessage(1, `RampUpTime - Average file size scaled (0-1): ${avg_file_size}`);
+  logMessage(2, `RampUpTime - Files scaled (0-1): ${files}`);
+  logMessage(2, `RampUpTime - Average file size scaled (0-1): ${avg_file_size}`);
   let mRampUpTime: number = (0.5 * files) + (0.5 * avg_file_size);
 
   return mRampUpTime;
