@@ -24,7 +24,7 @@ https://github.com/cloudinary/cloudinary_npm
 https://www.npmjs.com/package/express
 https://github.com/nullivex/nodist
 
-The system also requires an .env file with a GitHub authentication token, log file location and logging virbosity level (0 for silent, 1 for info, 2 for debugging). The file should be named ".env", and in this format:
+The system also requires a .env file with a GitHub authentication token, log file location and logging virbosity level (0 for silent, 1 for info, 2 for debugging). The file should be named ".env", and in this format:
 
 GITHUB_TOKEN = *token here*
 LOG_FILE = *path here*
