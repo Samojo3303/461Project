@@ -1,10 +1,10 @@
 # 461Project Phase 1
 
 Group members:
-Samuel Johnson
-Jana Gamal
-Doha Hafez
-Harrison Smith
+Samuel Johnson,
+Jana Gamal,
+Doha Hafez,
+Harrison Smith,
 Sydney Chang
 
 # Purpose
