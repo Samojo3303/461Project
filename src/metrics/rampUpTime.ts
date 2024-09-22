@@ -136,12 +136,12 @@ export async function metricRampUpTime(variables: { owner: string, name: string 
             }
           });
         } else {
-          logMessage(2, 'RampUpTime: No files available');
+          logMessage(2, 'RampUpTime - No files available');
           return -1;
         }
       }
       else {
-        logMessage(2, 'RampUpTime: No repository data available');
+        logMessage(2, 'RampUpTime - No repository data available');
         return -1;
       }
 
