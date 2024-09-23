@@ -1,3 +1,4 @@
+// jestRunner1-5.test.ts
 import { runCommand } from './src/jestRunner';
 import { describe, it, expect, afterAll } from '@jest/globals';
 import * as fs from 'fs';
@@ -7,55 +8,22 @@ describe('Command Line Runner', () => {
   let total = 0;
   let passed = 0;
 
-  it('should return 0 for "./run testURL1.txt"', async () => {
-    const { stdout, exitCode } = await runCommand('./run ./testURLs/testURL1.txt');
-    expect(exitCode).toBe(0);
-    if (exitCode === 0) {
-      passed += 1;
-    }
-    total += 1;
-  });
+  const testUrls = ['./testURLs/testURL1.txt', './testURLs/testURL2.txt', './testURLs/testURL3.txt', './testURLs/testURL4.txt', './testURLs/testURL5.txt'];
 
-  it('should return 0 for "./run testURL2.txt"', async () => {
-    const { stdout, exitCode } = await runCommand('./run ./testURLs/testURL2.txt');
-    expect(exitCode).toBe(0);
-    if (exitCode === 0) {
-      passed += 1;
-    }
-    total += 1;
-  });
-
-  it('should return 0 for "./run testURL3.txt"', async () => {
-    const { stdout, exitCode } = await runCommand('./run ./testURLs/testURL3.txt');
-    expect(exitCode).toBe(0);
-    if (exitCode === 0) {
-      passed += 1;
-    }
-    total += 1;
-  });
-
-  it('should return 0 for "./run testURL4.txt"', async () => {
-    const { stdout, exitCode } = await runCommand('./run ./testURLs/testURL4.txt');
-    expect(exitCode).toBe(0);
-    if (exitCode === 0) {
-      passed += 1;
-    }
-    total += 1;
-  });
-
-  it('should return 0 for "./run testURL5.txt"', async () => {
-    const { stdout, exitCode } = await runCommand('./run ./testURLs/testURL5.txt');
-    expect(exitCode).toBe(0);
-    if (exitCode === 0) {
-      passed += 1;
-    }
-    total += 1;
-  });
+  for (const url of testUrls) {
+    it(`should return 0 for "${url}"`, async () => {
+      const { stdout, exitCode } = await runCommand(`./run ${url}`);
+      expect(exitCode).toBe(0);
+      if (exitCode === 0) {
+        passed += 1;
+      }
+      total += 1;
+    });
+  }
 
   afterAll(() => {
     const filePath = path.join(__dirname, 'testResults.txt');
     const results = `Total ${total} Passed ${passed}\n`;
     fs.appendFileSync(filePath, results, 'utf8');
   });
-
 });
