@@ -1,0 +1,954 @@
+2024-09-23T03:28:03.479Z [2] Input URL: https://github.com/cloudinary/cloudinary_npm
+2024-09-23T03:28:03.482Z [2] URL Location: Run
+2024-09-23T03:28:03.482Z [1] Analyzing repository: cloudinary/cloudinary_npm
+2024-09-23T03:28:03.725Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:28:03.726Z [2] Responsiveness - Cost: 1
+2024-09-23T03:28:03.727Z [2] Responsiveness - Remaining: 4496
+2024-09-23T03:28:03.727Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:03.728Z [1] Responsiveness - Most recent commit: 8 days ago
+2024-09-23T03:28:03.729Z [1] Responsiveness - Avg commit period: 9 days
+2024-09-23T03:28:03.729Z [2] Responsiveness - Recency scaled: 1
+2024-09-23T03:28:03.730Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:28:03.731Z [1] Responsiveness: 1 (Latency: 0.248s)
+2024-09-23T03:28:04.209Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:28:04.209Z [2] RampUpTime - Cost: 1
+2024-09-23T03:28:04.210Z [2] RampUpTime - Remaining: 4495
+2024-09-23T03:28:04.211Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:04.211Z [1] RampUpTime - Files: 92
+2024-09-23T03:28:04.212Z [1] RampUpTime - Average file size: 447KB
+2024-09-23T03:28:04.213Z [2] RampUpTime - Files scaled (0-1): 0.7050847457627119
+2024-09-23T03:28:04.213Z [2] RampUpTime - Average file size scaled (0-1): 0.5588048967940272
+2024-09-23T03:28:04.214Z [1] RampUpTime: 0.632 (Latency: 0.483s)
+2024-09-23T03:28:04.455Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:28:04.456Z [2] BusFactor - Cost: 1
+2024-09-23T03:28:04.457Z [2] BusFactor - Remaining: 4494
+2024-09-23T03:28:04.458Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:04.458Z [1] BusFactor - Authors: 3
+2024-09-23T03:28:04.459Z [1] BusFactor: 0.5 (Latency: 0.244s)
+2024-09-23T03:28:07.814Z [1] License - Reading license from README.md
+2024-09-23T03:28:07.815Z [2] License - Extracting license from README.md
+2024-09-23T03:28:07.816Z [1] License: 0 (Latency: 0.002s)
+2024-09-23T03:28:07.899Z [2] Correctness - First commit: 2024-09-15T12:12:21.000Z
+2024-09-23T03:28:07.900Z [2] Correctness -Last commit: 2024-09-15T12:12:21.000Z
+2024-09-23T03:28:07.901Z [2] Correctness - Repository age: 1 days
+2024-09-23T03:28:07.902Z [2] Correctness - Commits per day: 1
+2024-09-23T03:28:07.902Z [1] Correctness: 0.2 (Latency: 0.085s)
+2024-09-23T03:28:08.019Z [1] RampUpTime Weight: 0.15
+2024-09-23T03:28:08.020Z [1] Correctness Weight: 0.2
+2024-09-23T03:28:08.021Z [1] BusFactor Weight: 0.3
+2024-09-23T03:28:08.021Z [1] Responsiveness Weight: 0.15
+2024-09-23T03:28:08.022Z [1] License Weight: 0.2
+2024-09-23T03:28:08.023Z [1] NetScore: 0.435 (Latency: 4.54s)
+2024-09-23T03:28:08.387Z [2] Input URL: https://github.com/cloudinary/cloudinary_npm
+2024-09-23T03:28:08.388Z [2] URL Location: Run
+2024-09-23T03:28:08.389Z [1] Analyzing repository: cloudinary/cloudinary_npm
+2024-09-23T03:28:08.718Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:28:08.719Z [2] Responsiveness - Cost: 1
+2024-09-23T03:28:08.719Z [2] Responsiveness - Remaining: 4493
+2024-09-23T03:28:08.720Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:08.720Z [1] Responsiveness - Most recent commit: 8 days ago
+2024-09-23T03:28:08.721Z [1] Responsiveness - Avg commit period: 9 days
+2024-09-23T03:28:08.723Z [2] Responsiveness - Recency scaled: 1
+2024-09-23T03:28:08.723Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:28:08.724Z [1] Responsiveness: 1 (Latency: 0.334s)
+2024-09-23T03:28:09.056Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:28:09.057Z [2] RampUpTime - Cost: 1
+2024-09-23T03:28:09.058Z [2] RampUpTime - Remaining: 4492
+2024-09-23T03:28:09.059Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:09.059Z [1] RampUpTime - Files: 92
+2024-09-23T03:28:09.060Z [1] RampUpTime - Average file size: 447KB
+2024-09-23T03:28:09.060Z [2] RampUpTime - Files scaled (0-1): 0.7050847457627119
+2024-09-23T03:28:09.061Z [2] RampUpTime - Average file size scaled (0-1): 0.5588048967940272
+2024-09-23T03:28:09.062Z [1] RampUpTime: 0.632 (Latency: 0.338s)
+2024-09-23T03:28:09.274Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:28:09.275Z [2] BusFactor - Cost: 1
+2024-09-23T03:28:09.276Z [2] BusFactor - Remaining: 4491
+2024-09-23T03:28:09.276Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:09.277Z [1] BusFactor - Authors: 3
+2024-09-23T03:28:09.278Z [1] BusFactor: 0.5 (Latency: 0.216s)
+2024-09-23T03:28:12.654Z [1] License - Reading license from README.md
+2024-09-23T03:28:12.655Z [2] License - Extracting license from README.md
+2024-09-23T03:28:12.655Z [1] License: 0 (Latency: 0.002s)
+2024-09-23T03:28:12.724Z [2] Correctness - First commit: 2024-09-15T12:12:21.000Z
+2024-09-23T03:28:12.725Z [2] Correctness -Last commit: 2024-09-15T12:12:21.000Z
+2024-09-23T03:28:12.726Z [2] Correctness - Repository age: 1 days
+2024-09-23T03:28:12.726Z [2] Correctness - Commits per day: 1
+2024-09-23T03:28:12.727Z [1] Correctness: 0.2 (Latency: 0.071s)
+2024-09-23T03:28:12.848Z [1] RampUpTime Weight: 0.15
+2024-09-23T03:28:12.849Z [1] Correctness Weight: 0.2
+2024-09-23T03:28:12.849Z [1] BusFactor Weight: 0.3
+2024-09-23T03:28:12.850Z [1] Responsiveness Weight: 0.15
+2024-09-23T03:28:12.851Z [1] License Weight: 0.2
+2024-09-23T03:28:12.853Z [1] NetScore: 0.435 (Latency: 4.463s)
+2024-09-23T03:28:41.518Z [2] Input URL: https://github.com/vuejs/vue
+2024-09-23T03:28:41.518Z [2] Input URL: https://github.com/facebook/react
+2024-09-23T03:28:41.519Z [2] URL Location: Run
+2024-09-23T03:28:41.519Z [2] URL Location: Run
+2024-09-23T03:28:41.520Z [1] Analyzing repository: vuejs/vue
+2024-09-23T03:28:41.520Z [1] Analyzing repository: facebook/react
+2024-09-23T03:28:41.528Z [2] Input URL: https://www.npmjs.com/package/mongoose
+2024-09-23T03:28:41.529Z [2] URL Location: npm
+2024-09-23T03:28:41.530Z [2] parseNpmLink return: mongoose
+2024-09-23T03:28:41.543Z [2] Input URL: https://github.com/cloudinary/cloudinary_npm
+2024-09-23T03:28:41.544Z [2] URL Location: Run
+2024-09-23T03:28:41.544Z [1] Analyzing repository: cloudinary/cloudinary_npm
+2024-09-23T03:28:41.745Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:28:41.746Z [2] Responsiveness - Cost: 1
+2024-09-23T03:28:41.746Z [2] Responsiveness - Remaining: 4489
+2024-09-23T03:28:41.747Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:41.748Z [1] Responsiveness - Most recent commit: 101 days ago
+2024-09-23T03:28:41.748Z [1] Responsiveness - Avg commit period: 10 days
+2024-09-23T03:28:41.749Z [2] Responsiveness - Recency scaled: 0.9195189639222942
+2024-09-23T03:28:41.750Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:28:41.750Z [1] Responsiveness: 0.968 (Latency: 0.23s)
+2024-09-23T03:28:41.803Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:28:41.804Z [2] Responsiveness - Cost: 1
+2024-09-23T03:28:41.805Z [2] Responsiveness - Remaining: 4490
+2024-09-23T03:28:41.806Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:41.806Z [1] Responsiveness - Most recent commit: 3 days ago
+2024-09-23T03:28:41.807Z [1] Responsiveness - Avg commit period: 0 days
+2024-09-23T03:28:41.808Z [2] Responsiveness - Recency scaled: 1
+2024-09-23T03:28:41.809Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:28:41.809Z [1] Responsiveness: 1 (Latency: 0.288s)
+2024-09-23T03:28:41.833Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:28:41.833Z [2] Responsiveness - Cost: 1
+2024-09-23T03:28:41.834Z [2] Responsiveness - Remaining: 4488
+2024-09-23T03:28:41.835Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:41.836Z [1] Responsiveness - Most recent commit: 8 days ago
+2024-09-23T03:28:41.836Z [1] Responsiveness - Avg commit period: 9 days
+2024-09-23T03:28:41.837Z [2] Responsiveness - Recency scaled: 1
+2024-09-23T03:28:41.838Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:28:41.838Z [1] Responsiveness: 1 (Latency: 0.293s)
+2024-09-23T03:28:42.012Z [2] getGitHubFromNpmAxios return: git://github.com/Automattic/mongoose.git
+2024-09-23T03:28:42.014Z [1] Analyzing repository: Automattic/mongoose
+2024-09-23T03:28:42.201Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:28:42.204Z [2] RampUpTime - Cost: 1
+2024-09-23T03:28:42.206Z [2] RampUpTime - Remaining: 4485
+2024-09-23T03:28:42.209Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:42.210Z [1] RampUpTime - Files: 92
+2024-09-23T03:28:42.212Z [1] RampUpTime - Average file size: 447KB
+2024-09-23T03:28:42.214Z [2] RampUpTime - Files scaled (0-1): 0.7050847457627119
+2024-09-23T03:28:42.216Z [2] RampUpTime - Average file size scaled (0-1): 0.5588048967940272
+2024-09-23T03:28:42.218Z [1] RampUpTime: 0.632 (Latency: 0.379s)
+2024-09-23T03:28:42.236Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:28:42.237Z [2] Responsiveness - Cost: 1
+2024-09-23T03:28:42.238Z [2] Responsiveness - Remaining: 4484
+2024-09-23T03:28:42.238Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:42.239Z [1] Responsiveness - Most recent commit: 6 days ago
+2024-09-23T03:28:42.240Z [1] Responsiveness - Avg commit period: 0 days
+2024-09-23T03:28:42.241Z [2] Responsiveness - Recency scaled: 1
+2024-09-23T03:28:42.241Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:28:42.242Z [1] Responsiveness: 1 (Latency: 0.228s)
+2024-09-23T03:28:42.367Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:28:42.368Z [2] RampUpTime - Cost: 1
+2024-09-23T03:28:42.368Z [2] RampUpTime - Remaining: 4487
+2024-09-23T03:28:42.369Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:42.370Z [1] RampUpTime - Files: 155
+2024-09-23T03:28:42.370Z [1] RampUpTime - Average file size: 6KB
+2024-09-23T03:28:42.371Z [2] RampUpTime - Files scaled (0-1): 0.4915254237288136
+2024-09-23T03:28:42.372Z [2] RampUpTime - Average file size scaled (0-1): 1
+2024-09-23T03:28:42.372Z [1] RampUpTime: 0.746 (Latency: 0.621s)
+2024-09-23T03:28:42.451Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:28:42.452Z [2] BusFactor - Cost: 1
+2024-09-23T03:28:42.453Z [2] BusFactor - Remaining: 4483
+2024-09-23T03:28:42.453Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:42.454Z [1] BusFactor - Authors: 3
+2024-09-23T03:28:42.455Z [1] BusFactor: 0.5 (Latency: 0.237s)
+2024-09-23T03:28:42.984Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:28:42.985Z [2] BusFactor - Cost: 1
+2024-09-23T03:28:42.986Z [2] BusFactor - Remaining: 4481
+2024-09-23T03:28:42.986Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:42.987Z [1] BusFactor - Authors: 17
+2024-09-23T03:28:42.988Z [1] BusFactor: 1 (Latency: 0.615s)
+2024-09-23T03:28:43.090Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:28:43.091Z [2] RampUpTime - Cost: 1
+2024-09-23T03:28:43.091Z [2] RampUpTime - Remaining: 4486
+2024-09-23T03:28:43.092Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:43.093Z [1] RampUpTime - Files: 519
+2024-09-23T03:28:43.093Z [1] RampUpTime - Average file size: 12KB
+2024-09-23T03:28:43.094Z [2] RampUpTime - Files scaled (0-1): 0
+2024-09-23T03:28:43.095Z [2] RampUpTime - Average file size scaled (0-1): 0.9974765166111987
+2024-09-23T03:28:43.096Z [1] RampUpTime: 0.499 (Latency: 1.286s)
+2024-09-23T03:28:43.447Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:28:43.448Z [2] BusFactor - Cost: 1
+2024-09-23T03:28:43.448Z [2] BusFactor - Remaining: 4480
+2024-09-23T03:28:43.449Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:43.450Z [1] BusFactor - Authors: 13
+2024-09-23T03:28:43.450Z [1] BusFactor: 1 (Latency: 0.353s)
+2024-09-23T03:28:43.905Z [2] Input URL: https://www.npmjs.com/package/async
+2024-09-23T03:28:43.906Z [2] URL Location: npm
+2024-09-23T03:28:43.907Z [2] parseNpmLink return: async
+2024-09-23T03:28:43.944Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:28:43.945Z [2] RampUpTime - Cost: 1
+2024-09-23T03:28:43.946Z [2] RampUpTime - Remaining: 4482
+2024-09-23T03:28:43.946Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:43.947Z [1] RampUpTime - Files: 539
+2024-09-23T03:28:43.948Z [1] RampUpTime - Average file size: 11KB
+2024-09-23T03:28:43.948Z [2] RampUpTime - Files scaled (0-1): 0
+2024-09-23T03:28:43.949Z [2] RampUpTime - Average file size scaled (0-1): 0.9990938756769926
+2024-09-23T03:28:43.950Z [1] RampUpTime: 0.5 (Latency: 1.708s)
+2024-09-23T03:28:43.988Z [2] Input URL: https://www.npmjs.com/package/axios
+2024-09-23T03:28:43.989Z [2] URL Location: npm
+2024-09-23T03:28:43.990Z [2] parseNpmLink return: axios
+2024-09-23T03:28:44.050Z [2] getGitHubFromNpmAxios return: https://github.com/caolan/async.git
+2024-09-23T03:28:44.051Z [1] Analyzing repository: caolan/async
+2024-09-23T03:28:44.107Z [2] getGitHubFromNpmAxios return: https://github.com/axios/axios.git
+2024-09-23T03:28:44.108Z [1] Analyzing repository: axios/axios
+2024-09-23T03:28:44.253Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:28:44.254Z [2] Responsiveness - Cost: 1
+2024-09-23T03:28:44.254Z [2] Responsiveness - Remaining: 4478
+2024-09-23T03:28:44.255Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:44.256Z [1] Responsiveness - Most recent commit: 21 days ago
+2024-09-23T03:28:44.256Z [1] Responsiveness - Avg commit period: 5 days
+2024-09-23T03:28:44.257Z [2] Responsiveness - Recency scaled: 0.9935245143385754
+2024-09-23T03:28:44.258Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:28:44.258Z [1] Responsiveness: 0.997 (Latency: 0.207s)
+2024-09-23T03:28:44.267Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:28:44.268Z [2] BusFactor - Cost: 1
+2024-09-23T03:28:44.268Z [2] BusFactor - Remaining: 4479
+2024-09-23T03:28:44.269Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:44.270Z [1] BusFactor - Authors: 5
+2024-09-23T03:28:44.270Z [1] BusFactor: 1 (Latency: 0.32s)
+2024-09-23T03:28:44.320Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:28:44.321Z [2] Responsiveness - Cost: 1
+2024-09-23T03:28:44.321Z [2] Responsiveness - Remaining: 4477
+2024-09-23T03:28:44.322Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:44.323Z [1] Responsiveness - Most recent commit: 8 days ago
+2024-09-23T03:28:44.324Z [1] Responsiveness - Avg commit period: 2 days
+2024-09-23T03:28:44.324Z [2] Responsiveness - Recency scaled: 1
+2024-09-23T03:28:44.325Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:28:44.326Z [1] Responsiveness: 1 (Latency: 0.218s)
+2024-09-23T03:28:44.932Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:28:44.933Z [2] RampUpTime - Cost: 1
+2024-09-23T03:28:44.934Z [2] RampUpTime - Remaining: 4475
+2024-09-23T03:28:44.935Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:44.935Z [1] RampUpTime - Files: 168
+2024-09-23T03:28:44.936Z [1] RampUpTime - Average file size: 24KB
+2024-09-23T03:28:44.937Z [2] RampUpTime - Files scaled (0-1): 0.4474576271186441
+2024-09-23T03:28:44.937Z [2] RampUpTime - Average file size scaled (0-1): 0.9859259800384801
+2024-09-23T03:28:44.938Z [1] RampUpTime: 0.717 (Latency: 0.612s)
+2024-09-23T03:28:45.001Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:28:45.002Z [2] RampUpTime - Cost: 1
+2024-09-23T03:28:45.003Z [2] RampUpTime - Remaining: 4476
+2024-09-23T03:28:45.003Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:45.004Z [1] RampUpTime - Files: 374
+2024-09-23T03:28:45.005Z [1] RampUpTime - Average file size: 14KB
+2024-09-23T03:28:45.005Z [2] RampUpTime - Files scaled (0-1): 0
+2024-09-23T03:28:45.006Z [2] RampUpTime - Average file size scaled (0-1): 0.9959602495543672
+2024-09-23T03:28:45.006Z [1] RampUpTime: 0.498 (Latency: 0.747s)
+2024-09-23T03:28:45.181Z [2] Input URL: https://www.npmjs.com/package/express
+2024-09-23T03:28:45.182Z [2] URL Location: npm
+2024-09-23T03:28:45.183Z [2] parseNpmLink return: express
+2024-09-23T03:28:45.238Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:28:45.239Z [2] BusFactor - Cost: 1
+2024-09-23T03:28:45.240Z [2] BusFactor - Remaining: 4474
+2024-09-23T03:28:45.241Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:45.241Z [1] BusFactor - Authors: 12
+2024-09-23T03:28:45.242Z [1] BusFactor: 1 (Latency: 0.303s)
+2024-09-23T03:28:45.264Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:28:45.265Z [2] BusFactor - Cost: 1
+2024-09-23T03:28:45.266Z [2] BusFactor - Remaining: 4473
+2024-09-23T03:28:45.266Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:45.267Z [1] BusFactor - Authors: 4
+2024-09-23T03:28:45.268Z [1] BusFactor: 0.75 (Latency: 0.261s)
+2024-09-23T03:28:45.298Z [2] getGitHubFromNpmAxios return: https://github.com/expressjs/express.git
+2024-09-23T03:28:45.299Z [1] Analyzing repository: expressjs/express
+2024-09-23T03:28:45.337Z [2] Input URL: https://github.com/socketio/socket.io
+2024-09-23T03:28:45.338Z [2] URL Location: Run
+2024-09-23T03:28:45.338Z [1] Analyzing repository: socketio/socket.io
+2024-09-23T03:28:45.446Z [2] Input URL: https://github.com/moment/moment
+2024-09-23T03:28:45.447Z [2] URL Location: Run
+2024-09-23T03:28:45.448Z [1] Analyzing repository: moment/moment
+2024-09-23T03:28:45.513Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:28:45.514Z [2] Responsiveness - Cost: 1
+2024-09-23T03:28:45.515Z [2] Responsiveness - Remaining: 4472
+2024-09-23T03:28:45.515Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:45.516Z [1] Responsiveness - Most recent commit: 13 days ago
+2024-09-23T03:28:45.517Z [1] Responsiveness - Avg commit period: 1 days
+2024-09-23T03:28:45.517Z [2] Responsiveness - Recency scaled: 1
+2024-09-23T03:28:45.518Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:28:45.519Z [1] Responsiveness: 1 (Latency: 0.219s)
+2024-09-23T03:28:45.595Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:28:45.596Z [2] Responsiveness - Cost: 1
+2024-09-23T03:28:45.597Z [2] Responsiveness - Remaining: 4471
+2024-09-23T03:28:45.597Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:45.598Z [1] Responsiveness - Most recent commit: 2 days ago
+2024-09-23T03:28:45.599Z [1] Responsiveness - Avg commit period: 0 days
+2024-09-23T03:28:45.600Z [2] Responsiveness - Recency scaled: 1
+2024-09-23T03:28:45.600Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:28:45.601Z [1] Responsiveness: 1 (Latency: 0.262s)
+2024-09-23T03:28:45.687Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:28:45.688Z [2] Responsiveness - Cost: 1
+2024-09-23T03:28:45.689Z [2] Responsiveness - Remaining: 4470
+2024-09-23T03:28:45.689Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:45.690Z [1] Responsiveness - Most recent commit: 218 days ago
+2024-09-23T03:28:45.691Z [1] Responsiveness - Avg commit period: 3 days
+2024-09-23T03:28:45.692Z [2] Responsiveness - Recency scaled: 0.8112858464384829
+2024-09-23T03:28:45.692Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:28:45.693Z [1] Responsiveness: 0.925 (Latency: 0.244s)
+2024-09-23T03:28:45.990Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:28:45.990Z [2] RampUpTime - Cost: 1
+2024-09-23T03:28:45.991Z [2] RampUpTime - Remaining: 4469
+2024-09-23T03:28:45.992Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:45.992Z [1] RampUpTime - Files: 169
+2024-09-23T03:28:45.993Z [1] RampUpTime - Average file size: 4KB
+2024-09-23T03:28:45.994Z [2] RampUpTime - Files scaled (0-1): 0.4440677966101695
+2024-09-23T03:28:45.994Z [2] RampUpTime - Average file size scaled (0-1): 1
+2024-09-23T03:28:45.995Z [1] RampUpTime: 0.722 (Latency: 0.476s)
+2024-09-23T03:28:46.331Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:28:46.332Z [2] BusFactor - Cost: 1
+2024-09-23T03:28:46.332Z [2] BusFactor - Remaining: 4466
+2024-09-23T03:28:46.333Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:46.334Z [1] BusFactor - Authors: 10
+2024-09-23T03:28:46.334Z [1] BusFactor: 1 (Latency: 0.339s)
+2024-09-23T03:28:46.475Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:28:46.476Z [2] RampUpTime - Cost: 1
+2024-09-23T03:28:46.477Z [2] RampUpTime - Remaining: 4468
+2024-09-23T03:28:46.477Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:46.478Z [1] RampUpTime - Files: 234
+2024-09-23T03:28:46.479Z [1] RampUpTime - Average file size: 8KB
+2024-09-23T03:28:46.479Z [2] RampUpTime - Files scaled (0-1): 0.22372881355932206
+2024-09-23T03:28:46.480Z [2] RampUpTime - Average file size scaled (0-1): 1
+2024-09-23T03:28:46.481Z [1] RampUpTime: 0.612 (Latency: 0.879s)
+2024-09-23T03:28:46.534Z [2] Input URL: https://github.com/nullivex/nodist
+2024-09-23T03:28:46.535Z [2] URL Location: Run
+2024-09-23T03:28:46.536Z [1] Analyzing repository: nullivex/nodist
+2024-09-23T03:28:46.665Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:28:46.666Z [2] RampUpTime - Cost: 1
+2024-09-23T03:28:46.667Z [2] RampUpTime - Remaining: 4467
+2024-09-23T03:28:46.667Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:46.668Z [1] RampUpTime - Files: 489
+2024-09-23T03:28:46.669Z [1] RampUpTime - Average file size: 21KB
+2024-09-23T03:28:46.669Z [2] RampUpTime - Files scaled (0-1): 0
+2024-09-23T03:28:46.670Z [2] RampUpTime - Average file size scaled (0-1): 0.9892615376670592
+2024-09-23T03:28:46.671Z [1] RampUpTime: 0.495 (Latency: 0.977s)
+2024-09-23T03:28:46.734Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:28:46.734Z [2] BusFactor - Cost: 1
+2024-09-23T03:28:46.735Z [2] BusFactor - Remaining: 4465
+2024-09-23T03:28:46.736Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:46.736Z [1] BusFactor - Authors: 6
+2024-09-23T03:28:46.737Z [1] BusFactor: 1 (Latency: 0.256s)
+2024-09-23T03:28:46.780Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:28:46.781Z [2] Responsiveness - Cost: 1
+2024-09-23T03:28:46.782Z [2] Responsiveness - Remaining: 4464
+2024-09-23T03:28:46.783Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:46.783Z [1] Responsiveness - Most recent commit: 289 days ago
+2024-09-23T03:28:46.784Z [1] Responsiveness - Avg commit period: 30 days
+2024-09-23T03:28:46.785Z [2] Responsiveness - Recency scaled: 0.7456059204440333
+2024-09-23T03:28:46.785Z [2] Responsiveness - Frequency scaled: 0.8230190861769809
+2024-09-23T03:28:46.786Z [1] Responsiveness: 0.792 (Latency: 0.25s)
+2024-09-23T03:28:46.911Z [2] Input URL: https://www.npmjs.com/package/jest
+2024-09-23T03:28:46.912Z [2] URL Location: npm
+2024-09-23T03:28:46.913Z [2] parseNpmLink return: jest
+2024-09-23T03:28:46.938Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:28:46.939Z [2] BusFactor - Cost: 1
+2024-09-23T03:28:46.940Z [2] BusFactor - Remaining: 4463
+2024-09-23T03:28:46.940Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:46.941Z [1] BusFactor - Authors: 7
+2024-09-23T03:28:46.942Z [1] BusFactor: 1 (Latency: 0.271s)
+2024-09-23T03:28:47.019Z [2] getGitHubFromNpmAxios return: https://github.com/jestjs/jest.git
+2024-09-23T03:28:47.020Z [1] Analyzing repository: jestjs/jest
+2024-09-23T03:28:47.032Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:28:47.032Z [2] RampUpTime - Cost: 1
+2024-09-23T03:28:47.033Z [2] RampUpTime - Remaining: 4462
+2024-09-23T03:28:47.034Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:47.034Z [1] RampUpTime - Files: 40
+2024-09-23T03:28:47.035Z [1] RampUpTime - Average file size: 5KB
+2024-09-23T03:28:47.036Z [2] RampUpTime - Files scaled (0-1): 0.8813559322033898
+2024-09-23T03:28:47.036Z [2] RampUpTime - Average file size scaled (0-1): 1
+2024-09-23T03:28:47.037Z [1] RampUpTime: 0.941 (Latency: 0.25s)
+2024-09-23T03:28:47.107Z [2] Input URL: https://www.npmjs.com/package/chalk
+2024-09-23T03:28:47.108Z [2] URL Location: npm
+2024-09-23T03:28:47.109Z [2] parseNpmLink return: chalk
+2024-09-23T03:28:47.186Z [2] getGitHubFromNpmAxios return: https://github.com/chalk/chalk.git
+2024-09-23T03:28:47.187Z [1] Analyzing repository: chalk/chalk
+2024-09-23T03:28:47.262Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:28:47.263Z [2] Responsiveness - Cost: 1
+2024-09-23T03:28:47.264Z [2] Responsiveness - Remaining: 4461
+2024-09-23T03:28:47.264Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:47.265Z [1] Responsiveness - Most recent commit: 31 days ago
+2024-09-23T03:28:47.266Z [1] Responsiveness - Avg commit period: 2 days
+2024-09-23T03:28:47.267Z [2] Responsiveness - Recency scaled: 0.9842738205365402
+2024-09-23T03:28:47.267Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:28:47.268Z [1] Responsiveness: 0.994 (Latency: 0.248s)
+2024-09-23T03:28:47.313Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:28:47.314Z [2] BusFactor - Cost: 1
+2024-09-23T03:28:47.315Z [2] BusFactor - Remaining: 4460
+2024-09-23T03:28:47.315Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:47.316Z [1] BusFactor - Authors: 11
+2024-09-23T03:28:47.316Z [1] BusFactor: 1 (Latency: 0.279s)
+2024-09-23T03:28:47.388Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:28:47.389Z [2] Responsiveness - Cost: 1
+2024-09-23T03:28:47.390Z [2] Responsiveness - Remaining: 4459
+2024-09-23T03:28:47.390Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:47.391Z [1] Responsiveness - Most recent commit: 41 days ago
+2024-09-23T03:28:47.392Z [1] Responsiveness - Avg commit period: 35 days
+2024-09-23T03:28:47.392Z [2] Responsiveness - Recency scaled: 0.9750231267345051
+2024-09-23T03:28:47.393Z [2] Responsiveness - Frequency scaled: 0.7657605552342395
+2024-09-23T03:28:47.394Z [1] Responsiveness: 0.849 (Latency: 0.206s)
+2024-09-23T03:28:47.498Z [2] Input URL: https://github.com/lodash/lodash
+2024-09-23T03:28:47.499Z [2] URL Location: Run
+2024-09-23T03:28:47.500Z [1] Analyzing repository: lodash/lodash
+2024-09-23T03:28:47.717Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:28:47.718Z [2] RampUpTime - Cost: 1
+2024-09-23T03:28:47.718Z [2] RampUpTime - Remaining: 4457
+2024-09-23T03:28:47.719Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:47.720Z [1] RampUpTime - Files: 28
+2024-09-23T03:28:47.720Z [1] RampUpTime - Average file size: 14KB
+2024-09-23T03:28:47.721Z [2] RampUpTime - Files scaled (0-1): 0.9220338983050848
+2024-09-23T03:28:47.722Z [2] RampUpTime - Average file size scaled (0-1): 0.9960251443001443
+2024-09-23T03:28:47.722Z [1] RampUpTime: 0.959 (Latency: 0.328s)
+2024-09-23T03:28:47.852Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:28:47.853Z [2] Responsiveness - Cost: 1
+2024-09-23T03:28:47.853Z [2] Responsiveness - Remaining: 4456
+2024-09-23T03:28:47.854Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:47.855Z [1] Responsiveness - Most recent commit: 75 days ago
+2024-09-23T03:28:47.856Z [1] Responsiveness - Avg commit period: 80 days
+2024-09-23T03:28:47.856Z [2] Responsiveness - Recency scaled: 0.9435707678075855
+2024-09-23T03:28:47.857Z [2] Responsiveness - Frequency scaled: 0.27125506072874495
+2024-09-23T03:28:47.858Z [1] Responsiveness: 0.54 (Latency: 0.357s)
+2024-09-23T03:28:48.039Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:28:48.040Z [2] BusFactor - Cost: 1
+2024-09-23T03:28:48.040Z [2] BusFactor - Remaining: 4455
+2024-09-23T03:28:48.041Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:48.042Z [1] BusFactor - Authors: 10
+2024-09-23T03:28:48.042Z [1] BusFactor: 1 (Latency: 0.319s)
+2024-09-23T03:28:48.209Z [2] Input URL: https://github.com/tj/commander.js
+2024-09-23T03:28:48.210Z [2] URL Location: Run
+2024-09-23T03:28:48.211Z [1] Analyzing repository: tj/commander.js
+2024-09-23T03:28:48.461Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:28:48.462Z [2] Responsiveness - Cost: 1
+2024-09-23T03:28:48.463Z [2] Responsiveness - Remaining: 4453
+2024-09-23T03:28:48.464Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:48.465Z [1] Responsiveness - Most recent commit: 128 days ago
+2024-09-23T03:28:48.466Z [1] Responsiveness - Avg commit period: 5 days
+2024-09-23T03:28:48.467Z [2] Responsiveness - Recency scaled: 0.8945420906567992
+2024-09-23T03:28:48.468Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:28:48.469Z [1] Responsiveness: 0.958 (Latency: 0.257s)
+2024-09-23T03:28:48.738Z [2] Input URL: https://github.com/reduxjs/redux
+2024-09-23T03:28:48.738Z [2] URL Location: Run
+2024-09-23T03:28:48.739Z [1] Analyzing repository: reduxjs/redux
+2024-09-23T03:28:49.016Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:28:49.017Z [2] Responsiveness - Cost: 1
+2024-09-23T03:28:49.018Z [2] Responsiveness - Remaining: 4451
+2024-09-23T03:28:49.018Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:49.019Z [1] Responsiveness - Most recent commit: 4 days ago
+2024-09-23T03:28:49.020Z [1] Responsiveness - Avg commit period: 2 days
+2024-09-23T03:28:49.020Z [2] Responsiveness - Recency scaled: 1
+2024-09-23T03:28:49.021Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:28:49.022Z [1] Responsiveness: 1 (Latency: 0.282s)
+2024-09-23T03:28:49.121Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:28:49.122Z [2] RampUpTime - Cost: 1
+2024-09-23T03:28:49.123Z [2] RampUpTime - Remaining: 4452
+2024-09-23T03:28:49.124Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:49.124Z [1] RampUpTime - Files: 205
+2024-09-23T03:28:49.125Z [1] RampUpTime - Average file size: 5KB
+2024-09-23T03:28:49.126Z [2] RampUpTime - Files scaled (0-1): 0.3220338983050848
+2024-09-23T03:28:49.126Z [2] RampUpTime - Average file size scaled (0-1): 1
+2024-09-23T03:28:49.127Z [1] RampUpTime: 0.661 (Latency: 0.657s)
+2024-09-23T03:28:49.331Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:28:49.332Z [2] BusFactor - Cost: 1
+2024-09-23T03:28:49.332Z [2] BusFactor - Remaining: 4449
+2024-09-23T03:28:49.333Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:49.334Z [1] BusFactor - Authors: 4
+2024-09-23T03:28:49.334Z [1] BusFactor: 0.75 (Latency: 0.207s)
+2024-09-23T03:28:49.634Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:28:49.635Z [2] RampUpTime - Cost: 1
+2024-09-23T03:28:49.636Z [2] RampUpTime - Remaining: 4450
+2024-09-23T03:28:49.637Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:49.638Z [1] RampUpTime - Files: 202
+2024-09-23T03:28:49.638Z [1] RampUpTime - Average file size: 95KB
+2024-09-23T03:28:49.639Z [2] RampUpTime - Files scaled (0-1): 0.33220338983050846
+2024-09-23T03:28:49.639Z [2] RampUpTime - Average file size scaled (0-1): 0.9140819681968197
+2024-09-23T03:28:49.640Z [1] RampUpTime: 0.623 (Latency: 0.618s)
+2024-09-23T03:28:50.063Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:28:50.064Z [2] BusFactor - Cost: 1
+2024-09-23T03:28:50.065Z [2] BusFactor - Remaining: 4448
+2024-09-23T03:28:50.065Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:50.066Z [1] BusFactor - Authors: 12
+2024-09-23T03:28:50.067Z [1] BusFactor: 1 (Latency: 0.426s)
+2024-09-23T03:28:50.252Z [2] Input URL: https://www.npmjs.com/package/lodash
+2024-09-23T03:28:50.253Z [2] URL Location: npm
+2024-09-23T03:28:50.254Z [2] parseNpmLink return: lodash
+2024-09-23T03:28:50.339Z [2] getGitHubFromNpmAxios return: https://github.com/lodash/lodash.git
+2024-09-23T03:28:50.340Z [1] Analyzing repository: lodash/lodash
+2024-09-23T03:28:50.576Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:28:50.577Z [2] Responsiveness - Cost: 1
+2024-09-23T03:28:50.578Z [2] Responsiveness - Remaining: 4447
+2024-09-23T03:28:50.578Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:50.579Z [1] Responsiveness - Most recent commit: 75 days ago
+2024-09-23T03:28:50.580Z [1] Responsiveness - Avg commit period: 80 days
+2024-09-23T03:28:50.580Z [2] Responsiveness - Recency scaled: 0.9435707678075855
+2024-09-23T03:28:50.581Z [2] Responsiveness - Frequency scaled: 0.27125506072874495
+2024-09-23T03:28:50.582Z [1] Responsiveness: 0.54 (Latency: 0.241s)
+2024-09-23T03:28:50.681Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:28:50.681Z [2] RampUpTime - Cost: 1
+2024-09-23T03:28:50.682Z [2] RampUpTime - Remaining: 4454
+2024-09-23T03:28:50.683Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:50.683Z [1] RampUpTime - Files: 709
+2024-09-23T03:28:50.684Z [1] RampUpTime - Average file size: 2KB
+2024-09-23T03:28:50.685Z [2] RampUpTime - Files scaled (0-1): 0
+2024-09-23T03:28:50.686Z [2] RampUpTime - Average file size scaled (0-1): 1
+2024-09-23T03:28:50.686Z [1] RampUpTime: 0.5 (Latency: 2.828s)
+2024-09-23T03:28:50.989Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:28:50.990Z [2] BusFactor - Cost: 1
+2024-09-23T03:28:50.990Z [2] BusFactor - Remaining: 4445
+2024-09-23T03:28:50.991Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:50.992Z [1] BusFactor - Authors: 23
+2024-09-23T03:28:50.993Z [1] BusFactor: 1 (Latency: 0.306s)
+2024-09-23T03:28:51.146Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:28:51.147Z [2] RampUpTime - Cost: 1
+2024-09-23T03:28:51.148Z [2] RampUpTime - Remaining: 4458
+2024-09-23T03:28:51.148Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:51.149Z [1] RampUpTime - Files: 1042
+2024-09-23T03:28:51.150Z [1] RampUpTime - Average file size: 5KB
+2024-09-23T03:28:51.150Z [2] RampUpTime - Files scaled (0-1): 0
+2024-09-23T03:28:51.151Z [2] RampUpTime - Average file size scaled (0-1): 1
+2024-09-23T03:28:51.152Z [1] RampUpTime: 0.5 (Latency: 3.883s)
+2024-09-23T03:28:51.431Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:28:51.432Z [2] BusFactor - Cost: 1
+2024-09-23T03:28:51.433Z [2] BusFactor - Remaining: 4444
+2024-09-23T03:28:51.435Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:51.436Z [1] BusFactor - Authors: 18
+2024-09-23T03:28:51.437Z [1] BusFactor: 1 (Latency: 0.285s)
+2024-09-23T03:28:51.772Z [2] Input URL: https://www.npmjs.com/package/browserify
+2024-09-23T03:28:51.773Z [2] URL Location: npm
+2024-09-23T03:28:51.774Z [2] parseNpmLink return: browserify
+2024-09-23T03:28:51.803Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:28:51.804Z [2] RampUpTime - Cost: 1
+2024-09-23T03:28:51.804Z [2] RampUpTime - Remaining: 4446
+2024-09-23T03:28:51.805Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:51.805Z [1] RampUpTime - Files: 709
+2024-09-23T03:28:51.806Z [1] RampUpTime - Average file size: 2KB
+2024-09-23T03:28:51.807Z [2] RampUpTime - Files scaled (0-1): 0
+2024-09-23T03:28:51.807Z [2] RampUpTime - Average file size scaled (0-1): 1
+2024-09-23T03:28:51.808Z [1] RampUpTime: 0.5 (Latency: 1.226s)
+2024-09-23T03:28:51.889Z [2] getGitHubFromNpmAxios return: ssh://git@github.com/browserify/browserify.git
+2024-09-23T03:28:51.890Z [1] Analyzing repository: browserify/browserify
+2024-09-23T03:28:51.934Z [2] Input URL: https://github.com/christimchan/Lab1
+2024-09-23T03:28:51.935Z [2] URL Location: Run
+2024-09-23T03:28:51.936Z [1] Analyzing repository: christimchan/Lab1
+2024-09-23T03:28:52.097Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:28:52.098Z [2] Responsiveness - Cost: 1
+2024-09-23T03:28:52.099Z [2] Responsiveness - Remaining: 4442
+2024-09-23T03:28:52.100Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:52.100Z [1] Responsiveness - Most recent commit: 338 days ago
+2024-09-23T03:28:52.101Z [1] Responsiveness - Avg commit period: 68 days
+2024-09-23T03:28:52.102Z [2] Responsiveness - Recency scaled: 0.700277520814061
+2024-09-23T03:28:52.103Z [2] Responsiveness - Frequency scaled: 0.40370156159629855
+2024-09-23T03:28:52.103Z [1] Responsiveness: 0.522 (Latency: 0.212s)
+2024-09-23T03:28:52.189Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:28:52.190Z [2] Responsiveness - Cost: 1
+2024-09-23T03:28:52.190Z [2] Responsiveness - Remaining: 4441
+2024-09-23T03:28:52.191Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:52.192Z [1] Responsiveness - Most recent commit: 15 days ago
+2024-09-23T03:28:52.193Z [1] Responsiveness - Avg commit period: 1 days
+2024-09-23T03:28:52.193Z [2] Responsiveness - Recency scaled: 0.9990749306197965
+2024-09-23T03:28:52.194Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:28:52.195Z [1] Responsiveness: 1 (Latency: 0.259s)
+2024-09-23T03:28:52.207Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:28:52.208Z [2] BusFactor - Cost: 1
+2024-09-23T03:28:52.209Z [2] BusFactor - Remaining: 4443
+2024-09-23T03:28:52.209Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:52.210Z [1] BusFactor - Authors: 23
+2024-09-23T03:28:52.210Z [1] BusFactor: 1 (Latency: 0.401s)
+2024-09-23T03:28:52.425Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:28:52.426Z [2] RampUpTime - Cost: 1
+2024-09-23T03:28:52.427Z [2] RampUpTime - Remaining: 4439
+2024-09-23T03:28:52.428Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:52.428Z [1] RampUpTime - Files: 20
+2024-09-23T03:28:52.429Z [1] RampUpTime - Average file size: 12KB
+2024-09-23T03:28:52.430Z [2] RampUpTime - Files scaled (0-1): 0.9491525423728814
+2024-09-23T03:28:52.430Z [2] RampUpTime - Average file size scaled (0-1): 0.9975330303030303
+2024-09-23T03:28:52.431Z [1] RampUpTime: 0.973 (Latency: 0.236s)
+2024-09-23T03:28:52.680Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:28:52.680Z [2] BusFactor - Cost: 1
+2024-09-23T03:28:52.681Z [2] BusFactor - Remaining: 4438
+2024-09-23T03:28:52.682Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:52.682Z [1] BusFactor - Authors: 2
+2024-09-23T03:28:52.683Z [1] BusFactor: 0.25 (Latency: 0.251s)
+2024-09-23T03:28:52.900Z [2] Input URL: https://www.npmjs.com/package/pug
+2024-09-23T03:28:52.901Z [2] URL Location: npm
+2024-09-23T03:28:52.902Z [2] parseNpmLink return: pug
+2024-09-23T03:28:52.902Z [2] Input URL: https://github.com/microsoft/TypeScript
+2024-09-23T03:28:52.903Z [2] URL Location: Run
+2024-09-23T03:28:52.903Z [1] Analyzing repository: microsoft/TypeScript
+2024-09-23T03:28:52.952Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:28:52.953Z [2] RampUpTime - Cost: 1
+2024-09-23T03:28:52.954Z [2] RampUpTime - Remaining: 4440
+2024-09-23T03:28:52.955Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:52.955Z [1] RampUpTime - Files: 333
+2024-09-23T03:28:52.956Z [1] RampUpTime - Average file size: 1KB
+2024-09-23T03:28:52.957Z [2] RampUpTime - Files scaled (0-1): 0
+2024-09-23T03:28:52.957Z [2] RampUpTime - Average file size scaled (0-1): 1
+2024-09-23T03:28:52.958Z [1] RampUpTime: 0.5 (Latency: 0.854s)
+2024-09-23T03:28:53.013Z [2] getGitHubFromNpmAxios return: https://github.com/pugjs/pug/tree/master/packages/pug
+2024-09-23T03:28:53.014Z [1] Analyzing repository: pugjs/pug
+2024-09-23T03:28:53.170Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:28:53.171Z [2] Responsiveness - Cost: 1
+2024-09-23T03:28:53.171Z [2] Responsiveness - Remaining: 4437
+2024-09-23T03:28:53.172Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:53.173Z [1] Responsiveness - Most recent commit: 4 days ago
+2024-09-23T03:28:53.174Z [1] Responsiveness - Avg commit period: 1 days
+2024-09-23T03:28:53.175Z [2] Responsiveness - Recency scaled: 1
+2024-09-23T03:28:53.175Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:28:53.176Z [1] Responsiveness: 1 (Latency: 0.272s)
+2024-09-23T03:28:53.179Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:28:53.179Z [2] BusFactor - Cost: 1
+2024-09-23T03:28:53.180Z [2] BusFactor - Remaining: 4436
+2024-09-23T03:28:53.181Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:53.181Z [1] BusFactor - Authors: 7
+2024-09-23T03:28:53.182Z [1] BusFactor: 1 (Latency: 0.224s)
+2024-09-23T03:28:53.233Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:28:53.234Z [2] Responsiveness - Cost: 1
+2024-09-23T03:28:53.235Z [2] Responsiveness - Remaining: 4435
+2024-09-23T03:28:53.236Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:53.236Z [1] Responsiveness - Most recent commit: 122 days ago
+2024-09-23T03:28:53.237Z [1] Responsiveness - Avg commit period: 78 days
+2024-09-23T03:28:53.238Z [2] Responsiveness - Recency scaled: 0.9000925069380203
+2024-09-23T03:28:53.238Z [2] Responsiveness - Frequency scaled: 0.29554655870445345
+2024-09-23T03:28:53.239Z [1] Responsiveness: 0.537 (Latency: 0.224s)
+2024-09-23T03:28:53.575Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:28:53.576Z [2] RampUpTime - Cost: 1
+2024-09-23T03:28:53.576Z [2] RampUpTime - Remaining: 4433
+2024-09-23T03:28:53.577Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:53.578Z [1] RampUpTime - Files: 84
+2024-09-23T03:28:53.578Z [1] RampUpTime - Average file size: 5KB
+2024-09-23T03:28:53.579Z [2] RampUpTime - Files scaled (0-1): 0.7322033898305085
+2024-09-23T03:28:53.580Z [2] RampUpTime - Average file size scaled (0-1): 1
+2024-09-23T03:28:53.580Z [1] RampUpTime: 0.866 (Latency: 0.34s)
+2024-09-23T03:28:53.906Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:28:53.907Z [2] BusFactor - Cost: 1
+2024-09-23T03:28:53.908Z [2] BusFactor - Remaining: 4432
+2024-09-23T03:28:53.909Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:53.909Z [1] BusFactor - Authors: 23
+2024-09-23T03:28:53.910Z [1] BusFactor: 1 (Latency: 0.329s)
+2024-09-23T03:28:55.300Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:28:55.301Z [2] RampUpTime - Cost: 1
+2024-09-23T03:28:55.302Z [2] RampUpTime - Remaining: 4434
+2024-09-23T03:28:55.303Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:55.303Z [1] RampUpTime - Files: 330
+2024-09-23T03:28:55.304Z [1] RampUpTime - Average file size: 45KB
+2024-09-23T03:28:55.304Z [2] RampUpTime - Files scaled (0-1): 0
+2024-09-23T03:28:55.305Z [2] RampUpTime - Average file size scaled (0-1): 0.9648632721150903
+2024-09-23T03:28:55.306Z [1] RampUpTime: 0.482 (Latency: 2.13s)
+2024-09-23T03:28:55.621Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:28:55.622Z [2] BusFactor - Cost: 1
+2024-09-23T03:28:55.622Z [2] BusFactor - Remaining: 4431
+2024-09-23T03:28:55.623Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:28:55.624Z [1] BusFactor - Authors: 20
+2024-09-23T03:28:55.624Z [1] BusFactor: 1 (Latency: 0.318s)
+2024-09-23T03:29:40.899Z [2] Input URL: https://github.com/cloudinary/cloudinary_npm
+2024-09-23T03:29:40.900Z [2] URL Location: Run
+2024-09-23T03:29:40.900Z [1] Analyzing repository: cloudinary/cloudinary_npm
+2024-09-23T03:29:41.200Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:29:41.201Z [2] Responsiveness - Cost: 1
+2024-09-23T03:29:41.202Z [2] Responsiveness - Remaining: 4430
+2024-09-23T03:29:41.203Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:29:41.204Z [1] Responsiveness - Most recent commit: 8 days ago
+2024-09-23T03:29:41.204Z [1] Responsiveness - Avg commit period: 9 days
+2024-09-23T03:29:41.205Z [2] Responsiveness - Recency scaled: 1
+2024-09-23T03:29:41.206Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:29:41.207Z [1] Responsiveness: 1 (Latency: 0.306s)
+2024-09-23T03:29:41.714Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:29:41.715Z [2] RampUpTime - Cost: 1
+2024-09-23T03:29:41.716Z [2] RampUpTime - Remaining: 4429
+2024-09-23T03:29:41.717Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:29:41.717Z [1] RampUpTime - Files: 92
+2024-09-23T03:29:41.718Z [1] RampUpTime - Average file size: 447KB
+2024-09-23T03:29:41.719Z [2] RampUpTime - Files scaled (0-1): 0.7050847457627119
+2024-09-23T03:29:41.720Z [2] RampUpTime - Average file size scaled (0-1): 0.5588048967940272
+2024-09-23T03:29:41.720Z [1] RampUpTime: 0.632 (Latency: 0.512s)
+2024-09-23T03:29:41.978Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:29:41.979Z [2] BusFactor - Cost: 1
+2024-09-23T03:29:41.979Z [2] BusFactor - Remaining: 4428
+2024-09-23T03:29:41.980Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:29:41.981Z [1] BusFactor - Authors: 3
+2024-09-23T03:29:41.982Z [1] BusFactor: 0.5 (Latency: 0.261s)
+2024-09-23T03:29:47.978Z [2] Input URL: https://github.com/cloudinary/cloudinary_npm
+2024-09-23T03:29:47.979Z [2] URL Location: Run
+2024-09-23T03:29:47.980Z [1] Analyzing repository: cloudinary/cloudinary_npm
+2024-09-23T03:29:48.267Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:29:48.268Z [2] Responsiveness - Cost: 1
+2024-09-23T03:29:48.269Z [2] Responsiveness - Remaining: 4427
+2024-09-23T03:29:48.269Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:29:48.270Z [1] Responsiveness - Most recent commit: 8 days ago
+2024-09-23T03:29:48.271Z [1] Responsiveness - Avg commit period: 9 days
+2024-09-23T03:29:48.272Z [2] Responsiveness - Recency scaled: 1
+2024-09-23T03:29:48.272Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:29:48.273Z [1] Responsiveness: 1 (Latency: 0.292s)
+2024-09-23T03:29:48.613Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:29:48.613Z [2] RampUpTime - Cost: 1
+2024-09-23T03:29:48.614Z [2] RampUpTime - Remaining: 4426
+2024-09-23T03:29:48.615Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:29:48.615Z [1] RampUpTime - Files: 92
+2024-09-23T03:29:48.616Z [1] RampUpTime - Average file size: 447KB
+2024-09-23T03:29:48.617Z [2] RampUpTime - Files scaled (0-1): 0.7050847457627119
+2024-09-23T03:29:48.617Z [2] RampUpTime - Average file size scaled (0-1): 0.5588048967940272
+2024-09-23T03:29:48.618Z [1] RampUpTime: 0.632 (Latency: 0.344s)
+2024-09-23T03:29:48.891Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:29:48.892Z [2] BusFactor - Cost: 1
+2024-09-23T03:29:48.892Z [2] BusFactor - Remaining: 4425
+2024-09-23T03:29:48.893Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:29:48.894Z [1] BusFactor - Authors: 3
+2024-09-23T03:29:48.894Z [1] BusFactor: 0.5 (Latency: 0.275s)
+2024-09-23T03:30:22.518Z [1] License - Reading license from README.md
+2024-09-23T03:30:22.519Z [2] License - Extracting license from README.md
+2024-09-23T03:30:22.520Z [1] License: 0 (Latency: 0.003s)
+2024-09-23T03:30:22.622Z [2] Correctness - First commit: 2024-09-19T22:59:36.000Z
+2024-09-23T03:30:22.623Z [2] Correctness -Last commit: 2024-09-19T22:59:36.000Z
+2024-09-23T03:30:22.624Z [2] Correctness - Repository age: 1 days
+2024-09-23T03:30:22.624Z [2] Correctness - Commits per day: 1
+2024-09-23T03:30:22.625Z [1] Correctness: 0.2 (Latency: 0.105s)
+2024-09-23T03:30:43.518Z [2] Input URL: https://github.com/cloudinary/cloudinary_npm
+2024-09-23T03:30:43.519Z [2] URL Location: Run
+2024-09-23T03:30:43.519Z [1] Analyzing repository: cloudinary/cloudinary_npm
+2024-09-23T03:30:43.762Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:30:43.763Z [2] Responsiveness - Cost: 1
+2024-09-23T03:30:43.763Z [2] Responsiveness - Remaining: 4424
+2024-09-23T03:30:43.764Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:30:43.765Z [1] Responsiveness - Most recent commit: 8 days ago
+2024-09-23T03:30:43.766Z [1] Responsiveness - Avg commit period: 9 days
+2024-09-23T03:30:43.766Z [2] Responsiveness - Recency scaled: 1
+2024-09-23T03:30:43.767Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:30:43.768Z [1] Responsiveness: 1 (Latency: 0.248s)
+2024-09-23T03:30:44.124Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:30:44.125Z [2] RampUpTime - Cost: 1
+2024-09-23T03:30:44.125Z [2] RampUpTime - Remaining: 4423
+2024-09-23T03:30:44.126Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:30:44.127Z [1] RampUpTime - Files: 92
+2024-09-23T03:30:44.128Z [1] RampUpTime - Average file size: 447KB
+2024-09-23T03:30:44.128Z [2] RampUpTime - Files scaled (0-1): 0.7050847457627119
+2024-09-23T03:30:44.129Z [2] RampUpTime - Average file size scaled (0-1): 0.5588048967940272
+2024-09-23T03:30:44.130Z [1] RampUpTime: 0.632 (Latency: 0.362s)
+2024-09-23T03:30:44.430Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:30:44.431Z [2] BusFactor - Cost: 1
+2024-09-23T03:30:44.432Z [2] BusFactor - Remaining: 4422
+2024-09-23T03:30:44.433Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:30:44.433Z [1] BusFactor - Authors: 3
+2024-09-23T03:30:44.434Z [1] BusFactor: 0.5 (Latency: 0.304s)
+2024-09-23T03:30:46.761Z [1] RampUpTime Weight: 0.15
+2024-09-23T03:30:46.762Z [1] Correctness Weight: 0.2
+2024-09-23T03:30:46.762Z [1] BusFactor Weight: 0.3
+2024-09-23T03:30:46.763Z [1] Responsiveness Weight: 0.15
+2024-09-23T03:30:46.764Z [1] License Weight: 0.2
+2024-09-23T03:30:46.764Z [1] NetScore: 0.562 (Latency: 113.86s)
+2024-09-23T03:30:50.310Z [1] License - Reading license from README.md
+2024-09-23T03:30:50.311Z [2] License - Extracting license from README.md
+2024-09-23T03:30:50.311Z [1] License: 0 (Latency: 0.002s)
+2024-09-23T03:30:50.391Z [2] Correctness - First commit: 2024-09-15T12:12:21.000Z
+2024-09-23T03:30:50.392Z [2] Correctness -Last commit: 2024-09-15T12:12:21.000Z
+2024-09-23T03:30:50.393Z [2] Correctness - Repository age: 1 days
+2024-09-23T03:30:50.393Z [2] Correctness - Commits per day: 1
+2024-09-23T03:30:50.394Z [1] Correctness: 0.2 (Latency: 0.082s)
+2024-09-23T03:30:50.508Z [1] RampUpTime Weight: 0.15
+2024-09-23T03:30:50.509Z [1] Correctness Weight: 0.2
+2024-09-23T03:30:50.509Z [1] BusFactor Weight: 0.3
+2024-09-23T03:30:50.510Z [1] Responsiveness Weight: 0.15
+2024-09-23T03:30:50.511Z [1] License Weight: 0.2
+2024-09-23T03:30:50.511Z [1] NetScore: 0.435 (Latency: 6.991s)
+2024-09-23T03:30:50.701Z [2] Input URL: https://github.com/cloudinary/cloudinary_npm
+2024-09-23T03:30:50.702Z [2] URL Location: Run
+2024-09-23T03:30:50.703Z [1] Analyzing repository: cloudinary/cloudinary_npm
+2024-09-23T03:30:50.945Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:30:50.946Z [2] Responsiveness - Cost: 1
+2024-09-23T03:30:50.946Z [2] Responsiveness - Remaining: 4421
+2024-09-23T03:30:50.947Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:30:50.947Z [1] Responsiveness - Most recent commit: 8 days ago
+2024-09-23T03:30:50.948Z [1] Responsiveness - Avg commit period: 9 days
+2024-09-23T03:30:50.949Z [2] Responsiveness - Recency scaled: 1
+2024-09-23T03:30:50.950Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:30:50.950Z [1] Responsiveness: 1 (Latency: 0.247s)
+2024-09-23T03:30:51.403Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:30:51.404Z [2] RampUpTime - Cost: 1
+2024-09-23T03:30:51.404Z [2] RampUpTime - Remaining: 4420
+2024-09-23T03:30:51.405Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:30:51.406Z [1] RampUpTime - Files: 92
+2024-09-23T03:30:51.406Z [1] RampUpTime - Average file size: 447KB
+2024-09-23T03:30:51.407Z [2] RampUpTime - Files scaled (0-1): 0.7050847457627119
+2024-09-23T03:30:51.407Z [2] RampUpTime - Average file size scaled (0-1): 0.5588048967940272
+2024-09-23T03:30:51.408Z [1] RampUpTime: 0.632 (Latency: 0.457s)
+2024-09-23T03:30:51.624Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:30:51.624Z [2] BusFactor - Cost: 1
+2024-09-23T03:30:51.625Z [2] BusFactor - Remaining: 4419
+2024-09-23T03:30:51.626Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:30:51.626Z [1] BusFactor - Authors: 3
+2024-09-23T03:30:51.627Z [1] BusFactor: 0.5 (Latency: 0.218s)
+2024-09-23T03:30:55.052Z [1] License - Reading license from README.md
+2024-09-23T03:30:55.053Z [2] License - Extracting license from README.md
+2024-09-23T03:30:55.054Z [1] License: 0 (Latency: 0.002s)
+2024-09-23T03:30:55.111Z [2] Correctness - First commit: 2024-09-15T12:12:21.000Z
+2024-09-23T03:30:55.112Z [2] Correctness -Last commit: 2024-09-15T12:12:21.000Z
+2024-09-23T03:30:55.112Z [2] Correctness - Repository age: 1 days
+2024-09-23T03:30:55.113Z [2] Correctness - Commits per day: 1
+2024-09-23T03:30:55.114Z [1] Correctness: 0.2 (Latency: 0.06s)
+2024-09-23T03:30:55.225Z [1] RampUpTime Weight: 0.15
+2024-09-23T03:30:55.226Z [1] Correctness Weight: 0.2
+2024-09-23T03:30:55.227Z [1] BusFactor Weight: 0.3
+2024-09-23T03:30:55.227Z [1] Responsiveness Weight: 0.15
+2024-09-23T03:30:55.228Z [1] License Weight: 0.2
+2024-09-23T03:30:55.229Z [1] NetScore: 0.435 (Latency: 4.526s)
+2024-09-23T03:31:24.960Z [2] Input URL: https://github.com/cloudinary/cloudinary_npm
+2024-09-23T03:31:24.961Z [2] URL Location: Run
+2024-09-23T03:31:24.962Z [1] Analyzing repository: cloudinary/cloudinary_npm
+2024-09-23T03:31:25.199Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:31:25.200Z [2] Responsiveness - Cost: 1
+2024-09-23T03:31:25.200Z [2] Responsiveness - Remaining: 4418
+2024-09-23T03:31:25.201Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:31:25.202Z [1] Responsiveness - Most recent commit: 8 days ago
+2024-09-23T03:31:25.203Z [1] Responsiveness - Avg commit period: 9 days
+2024-09-23T03:31:25.203Z [2] Responsiveness - Recency scaled: 1
+2024-09-23T03:31:25.204Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:31:25.205Z [1] Responsiveness: 1 (Latency: 0.243s)
+2024-09-23T03:31:25.847Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:31:25.848Z [2] RampUpTime - Cost: 1
+2024-09-23T03:31:25.849Z [2] RampUpTime - Remaining: 4417
+2024-09-23T03:31:25.849Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:31:25.850Z [1] RampUpTime - Files: 92
+2024-09-23T03:31:25.851Z [1] RampUpTime - Average file size: 447KB
+2024-09-23T03:31:25.851Z [2] RampUpTime - Files scaled (0-1): 0.7050847457627119
+2024-09-23T03:31:25.852Z [2] RampUpTime - Average file size scaled (0-1): 0.5588048967940272
+2024-09-23T03:31:25.853Z [1] RampUpTime: 0.632 (Latency: 0.648s)
+2024-09-23T03:31:26.150Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:31:26.151Z [2] BusFactor - Cost: 1
+2024-09-23T03:31:26.152Z [2] BusFactor - Remaining: 4416
+2024-09-23T03:31:26.153Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:31:26.153Z [1] BusFactor - Authors: 3
+2024-09-23T03:31:26.154Z [1] BusFactor: 0.5 (Latency: 0.301s)
+2024-09-23T03:31:29.629Z [1] License - Reading license from README.md
+2024-09-23T03:31:29.630Z [2] License - Extracting license from README.md
+2024-09-23T03:31:29.631Z [1] License: 0 (Latency: 0.002s)
+2024-09-23T03:31:29.711Z [2] Correctness - First commit: 2024-09-15T12:12:21.000Z
+2024-09-23T03:31:29.712Z [2] Correctness -Last commit: 2024-09-15T12:12:21.000Z
+2024-09-23T03:31:29.713Z [2] Correctness - Repository age: 1 days
+2024-09-23T03:31:29.714Z [2] Correctness - Commits per day: 1
+2024-09-23T03:31:29.714Z [1] Correctness: 0.2 (Latency: 0.082s)
+2024-09-23T03:31:29.861Z [1] RampUpTime Weight: 0.15
+2024-09-23T03:31:29.862Z [1] Correctness Weight: 0.2
+2024-09-23T03:31:29.862Z [1] BusFactor Weight: 0.3
+2024-09-23T03:31:29.863Z [1] Responsiveness Weight: 0.15
+2024-09-23T03:31:29.864Z [1] License Weight: 0.2
+2024-09-23T03:31:29.864Z [1] NetScore: 0.435 (Latency: 4.902s)
+2024-09-23T03:31:30.060Z [2] Input URL: https://github.com/cloudinary/cloudinary_npm
+2024-09-23T03:31:30.061Z [2] URL Location: Run
+2024-09-23T03:31:30.061Z [1] Analyzing repository: cloudinary/cloudinary_npm
+2024-09-23T03:31:30.283Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:31:30.284Z [2] Responsiveness - Cost: 1
+2024-09-23T03:31:30.285Z [2] Responsiveness - Remaining: 4415
+2024-09-23T03:31:30.285Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:31:30.286Z [1] Responsiveness - Most recent commit: 8 days ago
+2024-09-23T03:31:30.287Z [1] Responsiveness - Avg commit period: 9 days
+2024-09-23T03:31:30.287Z [2] Responsiveness - Recency scaled: 1
+2024-09-23T03:31:30.288Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:31:30.288Z [1] Responsiveness: 1 (Latency: 0.226s)
+2024-09-23T03:31:30.704Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:31:30.704Z [2] RampUpTime - Cost: 1
+2024-09-23T03:31:30.705Z [2] RampUpTime - Remaining: 4414
+2024-09-23T03:31:30.706Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:31:30.706Z [1] RampUpTime - Files: 92
+2024-09-23T03:31:30.707Z [1] RampUpTime - Average file size: 447KB
+2024-09-23T03:31:30.708Z [2] RampUpTime - Files scaled (0-1): 0.7050847457627119
+2024-09-23T03:31:30.708Z [2] RampUpTime - Average file size scaled (0-1): 0.5588048967940272
+2024-09-23T03:31:30.709Z [1] RampUpTime: 0.632 (Latency: 0.42s)
+2024-09-23T03:31:30.927Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:31:30.927Z [2] BusFactor - Cost: 1
+2024-09-23T03:31:30.928Z [2] BusFactor - Remaining: 4413
+2024-09-23T03:31:30.929Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:31:30.929Z [1] BusFactor - Authors: 3
+2024-09-23T03:31:30.930Z [1] BusFactor: 0.5 (Latency: 0.221s)
+2024-09-23T03:31:34.378Z [1] License - Reading license from README.md
+2024-09-23T03:31:34.379Z [2] License - Extracting license from README.md
+2024-09-23T03:31:34.380Z [1] License: 0 (Latency: 0.002s)
+2024-09-23T03:31:34.447Z [2] Correctness - First commit: 2024-09-15T12:12:21.000Z
+2024-09-23T03:31:34.448Z [2] Correctness -Last commit: 2024-09-15T12:12:21.000Z
+2024-09-23T03:31:34.449Z [2] Correctness - Repository age: 1 days
+2024-09-23T03:31:34.450Z [2] Correctness - Commits per day: 1
+2024-09-23T03:31:34.450Z [1] Correctness: 0.2 (Latency: 0.07s)
+2024-09-23T03:31:34.571Z [1] RampUpTime Weight: 0.15
+2024-09-23T03:31:34.572Z [1] Correctness Weight: 0.2
+2024-09-23T03:31:34.572Z [1] BusFactor Weight: 0.3
+2024-09-23T03:31:34.573Z [1] Responsiveness Weight: 0.15
+2024-09-23T03:31:34.574Z [1] License Weight: 0.2
+2024-09-23T03:31:34.574Z [1] NetScore: 0.435 (Latency: 4.512s)
+2024-09-23T03:31:50.341Z [2] Input URL: https://github.com/cloudinary/cloudinary_npm
+2024-09-23T03:31:50.342Z [2] URL Location: Run
+2024-09-23T03:31:50.343Z [1] Analyzing repository: cloudinary/cloudinary_npm
+2024-09-23T03:31:50.617Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:31:50.618Z [2] Responsiveness - Cost: 1
+2024-09-23T03:31:50.619Z [2] Responsiveness - Remaining: 4412
+2024-09-23T03:31:50.620Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:31:50.620Z [1] Responsiveness - Most recent commit: 8 days ago
+2024-09-23T03:31:50.621Z [1] Responsiveness - Avg commit period: 9 days
+2024-09-23T03:31:50.622Z [2] Responsiveness - Recency scaled: 1
+2024-09-23T03:31:50.622Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:31:50.623Z [1] Responsiveness: 1 (Latency: 0.279s)
+2024-09-23T03:31:50.986Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:31:50.987Z [2] RampUpTime - Cost: 1
+2024-09-23T03:31:50.988Z [2] RampUpTime - Remaining: 4411
+2024-09-23T03:31:50.989Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:31:50.990Z [1] RampUpTime - Files: 92
+2024-09-23T03:31:50.990Z [1] RampUpTime - Average file size: 447KB
+2024-09-23T03:31:50.991Z [2] RampUpTime - Files scaled (0-1): 0.7050847457627119
+2024-09-23T03:31:50.991Z [2] RampUpTime - Average file size scaled (0-1): 0.5588048967940272
+2024-09-23T03:31:50.992Z [1] RampUpTime: 0.632 (Latency: 0.368s)
+2024-09-23T03:31:51.211Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:31:51.212Z [2] BusFactor - Cost: 1
+2024-09-23T03:31:51.213Z [2] BusFactor - Remaining: 4410
+2024-09-23T03:31:51.213Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:31:51.214Z [1] BusFactor - Authors: 3
+2024-09-23T03:31:51.215Z [1] BusFactor: 0.5 (Latency: 0.222s)
+2024-09-23T03:31:54.546Z [1] License - Reading license from README.md
+2024-09-23T03:31:54.547Z [2] License - Extracting license from README.md
+2024-09-23T03:31:54.547Z [1] License: 0 (Latency: 0.002s)
+2024-09-23T03:31:54.608Z [2] Correctness - First commit: 2024-09-15T12:12:21.000Z
+2024-09-23T03:31:54.609Z [2] Correctness -Last commit: 2024-09-15T12:12:21.000Z
+2024-09-23T03:31:54.610Z [2] Correctness - Repository age: 1 days
+2024-09-23T03:31:54.610Z [2] Correctness - Commits per day: 1
+2024-09-23T03:31:54.611Z [1] Correctness: 0.2 (Latency: 0.063s)
+2024-09-23T03:31:54.736Z [1] RampUpTime Weight: 0.15
+2024-09-23T03:31:54.737Z [1] Correctness Weight: 0.2
+2024-09-23T03:31:54.737Z [1] BusFactor Weight: 0.3
+2024-09-23T03:31:54.738Z [1] Responsiveness Weight: 0.15
+2024-09-23T03:31:54.739Z [1] License Weight: 0.2
+2024-09-23T03:31:54.739Z [1] NetScore: 0.435 (Latency: 4.395s)
+2024-09-23T03:31:54.926Z [2] Input URL: https://github.com/cloudinary/cloudinary_npm
+2024-09-23T03:31:54.927Z [2] URL Location: Run
+2024-09-23T03:31:54.927Z [1] Analyzing repository: cloudinary/cloudinary_npm
+2024-09-23T03:31:55.203Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:31:55.204Z [2] Responsiveness - Cost: 1
+2024-09-23T03:31:55.205Z [2] Responsiveness - Remaining: 4409
+2024-09-23T03:31:55.206Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:31:55.206Z [1] Responsiveness - Most recent commit: 8 days ago
+2024-09-23T03:31:55.207Z [1] Responsiveness - Avg commit period: 9 days
+2024-09-23T03:31:55.208Z [2] Responsiveness - Recency scaled: 1
+2024-09-23T03:31:55.208Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:31:55.209Z [1] Responsiveness: 1 (Latency: 0.281s)
+2024-09-23T03:31:55.548Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:31:55.549Z [2] RampUpTime - Cost: 1
+2024-09-23T03:31:55.550Z [2] RampUpTime - Remaining: 4408
+2024-09-23T03:31:55.550Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:31:55.551Z [1] RampUpTime - Files: 92
+2024-09-23T03:31:55.552Z [1] RampUpTime - Average file size: 447KB
+2024-09-23T03:31:55.552Z [2] RampUpTime - Files scaled (0-1): 0.7050847457627119
+2024-09-23T03:31:55.553Z [2] RampUpTime - Average file size scaled (0-1): 0.5588048967940272
+2024-09-23T03:31:55.554Z [1] RampUpTime: 0.632 (Latency: 0.344s)
+2024-09-23T03:31:55.843Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:31:55.844Z [2] BusFactor - Cost: 1
+2024-09-23T03:31:55.845Z [2] BusFactor - Remaining: 4407
+2024-09-23T03:31:55.845Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:31:55.846Z [1] BusFactor - Authors: 3
+2024-09-23T03:31:55.847Z [1] BusFactor: 0.5 (Latency: 0.293s)
+2024-09-23T03:31:59.153Z [1] License - Reading license from README.md
+2024-09-23T03:31:59.154Z [2] License - Extracting license from README.md
+2024-09-23T03:31:59.155Z [1] License: 0 (Latency: 0.002s)
+2024-09-23T03:31:59.228Z [2] Correctness - First commit: 2024-09-15T12:12:21.000Z
+2024-09-23T03:31:59.229Z [2] Correctness -Last commit: 2024-09-15T12:12:21.000Z
+2024-09-23T03:31:59.230Z [2] Correctness - Repository age: 1 days
+2024-09-23T03:31:59.231Z [2] Correctness - Commits per day: 1
+2024-09-23T03:31:59.231Z [1] Correctness: 0.2 (Latency: 0.075s)
+2024-09-23T03:31:59.351Z [1] RampUpTime Weight: 0.15
+2024-09-23T03:31:59.352Z [1] Correctness Weight: 0.2
+2024-09-23T03:31:59.353Z [1] BusFactor Weight: 0.3
+2024-09-23T03:31:59.354Z [1] Responsiveness Weight: 0.15
+2024-09-23T03:31:59.355Z [1] License Weight: 0.2
+2024-09-23T03:31:59.355Z [1] NetScore: 0.435 (Latency: 4.427s)
