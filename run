@@ -2,9 +2,25 @@
 
 # Check for the "install" command
 if [ "$1" == "install" ]; then
-  echo "Installing dependencies..."
   npm install --legacy-peer-deps
   if [ $? -eq 0 ]; then
+    exit 0
+  else
+    exit 1
+  fi
+fi
+# Check for the "test" command
+if [ "$1" == "test" ]; then
+  rm -f testResults.txt
+  npx jest --verbose --json > jest_logs.txt 2>&1
+  if [ $? -eq 0 ]; then
+    # Parse testResults and return sum of all number values
+    passed=$(grep -oP 'Passed\s+\K\d+' testResults.txt | awk '{s+=$1} END {print s}')
+    total=$(grep -oP 'Total\s+\K\d+' testResults.txt | awk '{s+=$1} END {print s}')
+
+    coverage=-1
+
+    echo "${passed}/${total} tests passed. ${coverage}% line coverage achieved."
     exit 0
   else
     exit 1
@@ -13,7 +29,6 @@ fi
 
 # Check for URL_FILE argument
 if [ "$#" -ne 1 ]; then
-  echo "Usage: ./run URL_FILE"
   exit 1
 fi
 

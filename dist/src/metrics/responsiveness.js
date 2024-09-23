@@ -1,3 +1,4 @@
+import { logMessage } from '../../log.js';
 import { GitHubClient } from '../githubClient.js';
 import * as dotenv from 'dotenv';
 dotenv.config();
@@ -50,24 +51,24 @@ export async function metricResponsiveness(variables) {
                     });
                 }
                 else {
-                    console.log('No commit history available');
+                    logMessage(2, 'Responsiveness - No commit history available');
                     return -1;
                 }
             }
             else {
-                console.log('No branch available');
+                logMessage(2, 'Responsiveness - No branch available');
                 return -1;
             }
         }
         else {
-            console.error("Repository data is undefined");
+            logMessage(2, 'Responsiveness - No repository data available');
             return -1;
         }
         const rateLimit = response.data.rateLimit;
-        // console.log(`Rate Limit: ${rateLimit.limit}`);
-        // console.log(`Cost: ${rateLimit.cost}`);
-        // console.log(`Remaining: ${rateLimit.remaining}`);
-        // console.log(`Reset At: ${rateLimit.resetAt}`);
+        logMessage(2, `Responsiveness - Rate Limit: ${rateLimit.limit}`);
+        logMessage(2, `Responsiveness - Cost: ${rateLimit.cost}`);
+        logMessage(2, `Responsiveness - Remaining: ${rateLimit.remaining}`);
+        logMessage(2, `Responsiveness - Reset At: ${rateLimit.resetAt}`);
         return calcResponsiveness(stats);
     })
         .catch(error => {
@@ -89,11 +90,13 @@ function calcResponsiveness(stats) {
     for (let i = 0; i < periods.length - 1; i++) {
         periods_diff.push(Math.abs(periods[i] - periods[i + 1]));
     }
-    //console.log('Most recent commit: ' + Math.min(...periods) + ' days ago');
+    logMessage(1, `Responsiveness - Most recent commit: ${Math.min(...periods)} days ago`);
     let recency = 1 - clampAndFit01(Math.min(...periods), 14, 365 * 3); //fit most recent commit date 0-1 from 2 weeks-3 years
     let frequency = periods_diff.reduce((acc, num) => acc + num, 0) / periods_diff.length;
-    //console.log('Avg commit period: ' + Math.round(frequency) + ' days');
+    logMessage(1, `Responsiveness - Avg commit period: ${Math.round(frequency)} days`);
     frequency = 1 - clampAndFit01(frequency, 7 * 2, 7 * 15); //fit average days between commits 0-1 from 2-15 weeks
+    logMessage(2, `Responsiveness - Recency scaled: ${recency}`);
+    logMessage(2, `Responsiveness - Frequency scaled: ${frequency}`);
     let mResponsiveness = (0.4 * recency) + (0.6 * frequency);
     return mResponsiveness;
 }

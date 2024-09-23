@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { logMessage } from '../../log';
-import { log } from 'console';
+import { logMessage } from '../../log.js';
 
 // Utility function to check if a license is compatible with LGPLv2.1
 export function isLicenseCompatibleWithLGPLv21(licenseText: string): boolean {

@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { logMessage } from '../../log.js';
 // Utility function to check if a license is compatible with LGPLv2.1
 export function isLicenseCompatibleWithLGPLv21(licenseText) {
     const compatibleLicenses = [
@@ -17,6 +18,7 @@ export function isLicenseCompatibleWithLGPLv21(licenseText) {
 }
 // Extract license from README using regex
 function extractLicenseFromReadme(readmeContent) {
+    logMessage(2, 'License - Extracting license from README.md');
     const licenseRegex = /##\s*License\s*\n+([^#]+)/i;
     const match = readmeContent.match(licenseRegex);
     return match ? match[1].trim() : null;
@@ -29,15 +31,18 @@ export async function analyzeLicense(localPath) {
     try {
         // Check if LICENSE file exists
         if (fs.existsSync(licenseFilePath)) {
+            logMessage(1, 'License - Reading license from LICENSE file');
             licenseText = fs.readFileSync(licenseFilePath, 'utf8');
         }
         // If not, check for license section in README.md
         else if (fs.existsSync(readmeFilePath)) {
+            logMessage(1, 'License - Reading license from README.md');
             const readmeContent = fs.readFileSync(readmeFilePath, 'utf8');
             licenseText = extractLicenseFromReadme(readmeContent);
         }
         // Determine if the license is compatible with LGPLv2.1
         if (licenseText && isLicenseCompatibleWithLGPLv21(licenseText)) {
+            logMessage(2, 'License - License is compatible with LGPLv2.1');
             return 1; // License is compatible
         }
         else {
@@ -45,6 +50,7 @@ export async function analyzeLicense(localPath) {
         }
     }
     catch (error) {
+        logMessage(2, 'License - Failed to analyze license');
         return -1;
         //console.error(`Failed to analyze license at ${localPath}:`, error);
         //throw error;

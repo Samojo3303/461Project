@@ -1,4 +1,3 @@
-import { log } from 'console';
 import { logMessage } from '../../log.js';
 import { GitHubClient } from '../githubClient.js';
 import * as dotenv from 'dotenv';
