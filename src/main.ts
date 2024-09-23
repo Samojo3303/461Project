@@ -28,6 +28,7 @@ export async function analyzeURL(url: string) {
       logMessage(2, `getGitHubFromNpmAxios return: ${url}`);
     } catch (error) {
       console.error(error);
+
       return null; // Indicate failure
     }
   }
@@ -132,6 +133,7 @@ export async function analyzeURL(url: string) {
       };
 
       return output;
+      process.exit(1);
     } catch (error) {
       console.error('Error during analysis:', error);
       return null; // Indicate failure
@@ -233,7 +235,7 @@ async function cloneRepository(gitUrl: string, localPath: string) {
 }
 
 // Process the URL_FILE and analyze each URL
-async function processUrlFile(filePath: string) {
+export async function processUrlFile(filePath: string) {
   try {
     if (process.env.GITHUB_TOKEN === undefined) {
       console.error('GitHub token is not defined in environment variables');

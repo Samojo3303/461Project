@@ -1,3 +1,4 @@
+import { logMessage } from '../../log.js';
 import { GitHubClient } from '../githubClient.js';
 import * as dotenv from 'dotenv';
 dotenv.config();
@@ -51,24 +52,24 @@ export async function metricBusFactor(variables) {
                     });
                 }
                 else {
-                    console.log('No commit history available');
+                    logMessage(2, 'BusFactor - No commit history available');
                     return -1;
                 }
             }
             else {
-                console.log('No branch available');
+                logMessage(2, 'BusFactor - No branch available');
                 return -1;
             }
         }
         else {
-            console.error("Repository data is undefined");
+            logMessage(2, 'BusFactor - No repository data available');
             return -1;
         }
         const rateLimit = response.data.rateLimit;
-        // console.log(`Rate Limit: ${rateLimit.limit}`);
-        // console.log(`Cost: ${rateLimit.cost}`);
-        // console.log(`Remaining: ${rateLimit.remaining}`);
-        // console.log(`Reset At: ${rateLimit.resetAt}`);
+        logMessage(2, `BusFactor - Rate Limit: ${rateLimit.limit}`);
+        logMessage(2, `BusFactor - Cost: ${rateLimit.cost}`);
+        logMessage(2, `BusFactor - Remaining: ${rateLimit.remaining}`);
+        logMessage(2, `BusFactor - Reset At: ${rateLimit.resetAt}`);
         return calcBusFactor(stats);
     })
         .catch(error => {
@@ -80,8 +81,7 @@ export async function metricBusFactor(variables) {
 function calcBusFactor(stats) {
     // BUS FACTOR: 1 if > 5 or more collaborators, 0 if 1 collaborator
     const uniqueArray = Array.from(new Set(stats.list_commits_authors));
-    //console.log('Authors:', uniqueArray);
-    //console.log('Unique authors:', uniqueArray.length);
+    logMessage(1, `BusFactor - Authors: ${uniqueArray.length}`);
     let mBusFactor = clampAndFit01(uniqueArray.length, 1, 5);
     return mBusFactor;
 }
