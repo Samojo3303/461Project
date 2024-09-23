@@ -1,0 +1,41 @@
+2024-09-23T03:21:40.235Z [2] Input URL: https://github.com/cloudinary/cloudinary_npm
+2024-09-23T03:21:40.237Z [2] URL Location: Run
+2024-09-23T03:21:40.238Z [1] Analyzing repository: cloudinary/cloudinary_npm
+2024-09-23T03:21:40.473Z [2] Responsiveness - Rate Limit: 5000
+2024-09-23T03:21:40.474Z [2] Responsiveness - Cost: 1
+2024-09-23T03:21:40.475Z [2] Responsiveness - Remaining: 4501
+2024-09-23T03:21:40.475Z [2] Responsiveness - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:21:40.476Z [1] Responsiveness - Most recent commit: 8 days ago
+2024-09-23T03:21:40.477Z [1] Responsiveness - Avg commit period: 9 days
+2024-09-23T03:21:40.478Z [2] Responsiveness - Recency scaled: 1
+2024-09-23T03:21:40.478Z [2] Responsiveness - Frequency scaled: 1
+2024-09-23T03:21:40.479Z [1] Responsiveness: 1 (Latency: 0.241s)
+2024-09-23T03:21:40.874Z [2] RampUpTime - Rate Limit: 5000
+2024-09-23T03:21:40.875Z [2] RampUpTime - Cost: 1
+2024-09-23T03:21:40.876Z [2] RampUpTime - Remaining: 4500
+2024-09-23T03:21:40.876Z [2] RampUpTime - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:21:40.877Z [1] RampUpTime - Files: 92
+2024-09-23T03:21:40.878Z [1] RampUpTime - Average file size: 447KB
+2024-09-23T03:21:40.878Z [2] RampUpTime - Files scaled (0-1): 0.7050847457627119
+2024-09-23T03:21:40.879Z [2] RampUpTime - Average file size scaled (0-1): 0.5588048967940272
+2024-09-23T03:21:40.880Z [1] RampUpTime: 0.632 (Latency: 0.4s)
+2024-09-23T03:21:41.112Z [2] BusFactor - Rate Limit: 5000
+2024-09-23T03:21:41.113Z [2] BusFactor - Cost: 1
+2024-09-23T03:21:41.114Z [2] BusFactor - Remaining: 4499
+2024-09-23T03:21:41.114Z [2] BusFactor - Reset At: 2024-09-23T03:38:57Z
+2024-09-23T03:21:41.115Z [1] BusFactor - Authors: 3
+2024-09-23T03:21:41.116Z [1] BusFactor: 0.5 (Latency: 0.236s)
+2024-09-23T03:21:44.438Z [1] License - Reading license from README.md
+2024-09-23T03:21:44.440Z [2] License - Extracting license from README.md
+2024-09-23T03:21:44.440Z [1] License: 0 (Latency: 0.002s)
+2024-09-23T03:21:44.501Z [2] Correctness - First commit: 2024-09-15T12:12:21.000Z
+2024-09-23T03:21:44.501Z [2] Correctness -Last commit: 2024-09-15T12:12:21.000Z
+2024-09-23T03:21:44.502Z [2] Correctness - Repository age: 1 days
+2024-09-23T03:21:44.503Z [2] Correctness - Commits per day: 1
+2024-09-23T03:21:44.503Z [1] Correctness: 0.2 (Latency: 0.062s)
+2024-09-23T03:21:44.695Z [1] RampUpTime Weight: 0.15
+2024-09-23T03:21:44.696Z [1] Correctness Weight: 0.2
+2024-09-23T03:21:44.696Z [1] BusFactor Weight: 0.3
+2024-09-23T03:21:44.697Z [1] Responsiveness Weight: 0.15
+2024-09-23T03:21:44.698Z [1] License Weight: 0.2
+2024-09-23T03:21:44.698Z [1] NetScore: 0.435 (Latency: 4.46s)
