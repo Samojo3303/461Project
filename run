@@ -11,14 +11,15 @@ if [ "$1" == "install" ]; then
 fi
 # Check for the "test" command
 if [ "$1" == "test" ]; then
-  # rm -f testResults.txt
-  # npx jest --verbose --json > jest_logs.txt 2>&1
+  rm -f testResults.txt
+  npx jest jestRunner1-5.test.ts --verbose --json --coverage > jest_logs.txt 2>&1
   if [ $? -eq 0 ]; then
     # Parse testResults and return sum of all number values
-    passed=0 #$(grep -oP 'Passed\s+\K\d+' testResults.txt | awk '{s+=$1} END {print s}')
-    total=0 #$(grep -oP 'Total\s+\K\d+' testResults.txt | awk '{s+=$1} END {print s}')
+    passed=$(grep -oP 'Passed\s+\K\d+' testResults.txt | awk '{s+=$1} END {print s}')
+    total=$(grep -oP 'Total\s+\K\d+' testResults.txt | awk '{s+=$1} END {print s}')
 
-    coverage=0
+    coverage=0 #$(grep -A 1 "lines" coverage/lcov.info | tail -n 1 | grep -o '[0-9]*\.[0-9]*')
+
 
     echo "${passed}/${total} test cases passed. ${coverage}% line coverage achieved."
     exit 0
